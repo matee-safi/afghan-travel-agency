@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 import '../globals.css';
 import Image from 'next/image';
 import Nav from '../components/Nav';
@@ -14,7 +14,7 @@ export default function Packages() {
   const [category, setCategory] = useState('all');
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
 
-  const searchParams = new URLSearchParams(window.location.search);
+  const searchParams = useSearchParams();
   const categoryFromURL = searchParams.get('category');
 
   useEffect(() => {
@@ -83,8 +83,8 @@ export default function Packages() {
         <div className="container">
           <div className="mt-12 p-2 overflow-none">
             {data.length < 1 && (
-              <div className="flex h-40 items-center">
-                <h1 className="text-xl font-bold">No Package available at the moment</h1>
+              <div className="flex h-40 items-center justify-center">
+                <h1 className="text-xl text-gray-500 font-bold">No Package available at the moment</h1>
               </div>
             )}
             {data.map((item, index) => (

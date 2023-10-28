@@ -3,7 +3,7 @@ const About = () => {
     <section id="about">
       <div className="container">
         <h1 className="text-2xl m-5">About Us</h1>
-        <p className="m-5">At Afghan Travel Agency, with over a decade of experience, we're dedicated to simplifying your travel dreams. We offer reliable visa assistance, the lowest ticket prices, and exclusive scholarships to Europe. Plus, our full refund policy ensures your journey is stress-free.</p>
+        <p className="m-5">At Afghan Travel Agency, with over a decade of experience, we&apos;re dedicated to simplifying your travel dreams. We offer reliable visa assistance, the lowest ticket prices, and exclusive scholarships to Europe. Plus, our full refund policy ensures your journey is stress-free.</p>
         <p className="m-5">You can find our location in the interactive map below.</p>
       </div>
       <div className="flex justify-center p-5">
