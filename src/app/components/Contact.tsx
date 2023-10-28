@@ -12,7 +12,7 @@ const Contact = () => {
               <div className="flex items-center justify-center bg-black">
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-lg group-hover bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
-                  <button className="relative rounded-lg bg-black px-2 py-1 text-white">Chat on Whatsapp</button>
+                  <button className="relative rounded-lg bg-primary px-2 py-1 text-white">Chat on Whatsapp</button>
                 </div>
               </div>
             </div>
@@ -22,7 +22,7 @@ const Contact = () => {
               <div className="flex items-center justify-center bg-black">
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-lg group-hover bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
-                  <button className="relative rounded-lg bg-black px-2 py-1 text-white">See Packages</button>
+                  <button className="relative rounded-lg bg-primary px-2 py-1 text-white">See Packages</button>
                 </div>
               </div>
             </div>

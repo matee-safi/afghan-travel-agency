@@ -11,7 +11,7 @@ import scholarship from '../data/scholarship.json';
 import asylum from '../data/asylum.json';
 
 export default function Packages() {
-  const [category, setCategory] = useState('all');
+  const [category, setCategory] = useState('');
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
 
   const searchParams = useSearchParams();
@@ -26,7 +26,7 @@ export default function Packages() {
 
   useEffect(() => {
     // Filter the data based on the selected category
-    switch (category) {
+    switch (categoryFromURL) {
       case 'visa':
         setData(visa);
         break;
@@ -43,7 +43,7 @@ export default function Packages() {
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
         break;
     }
-  }, [category]);
+  }, [categoryFromURL]);
 
   return (
     <main>
@@ -51,27 +51,27 @@ export default function Packages() {
       <div className="container">
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
-            <div className={`${category === 'all' ? 'active' : ''} category-tab__item`}>
-              <Link href="/packages?category=all">
+            <div className={`${categoryFromURL === null ? 'active' : ''} category-tab__item`}>
+              <Link href="/packages">
                 <span className="category-tab-text">All</span>
               </Link>
             </div>
-            <div className={`${category === 'visa' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === 'visa' ? 'active' : ''} category-tab__item`}>
               <Link href="/packages?category=visa">
                 <span className="category-tab-text">Visa</span>
               </Link>
             </div>
-            <div className={`${category === 'ticket' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === 'ticket' ? 'active' : ''} category-tab__item`}>
               <Link href="/packages?category=ticket">
                 <span className="category-tab-text">Ticket</span>
               </Link>
             </div>
-            <div className={`${category === 'scholarship' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === 'scholarship' ? 'active' : ''} category-tab__item`}>
               <Link href="/packages?category=scholarship">
                 <span className="category-tab-text">Scholarship</span>
               </Link>
             </div>
-            <div className={`${category === 'asylum' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === 'asylum' ? 'active' : ''} category-tab__item`}>
               <Link href="/packages?category=asylum">
                 <span className="category-tab-text">Asylum</span>
               </Link>
@@ -89,7 +89,7 @@ export default function Packages() {
             )}
             {data.map((item, index) => (
               <div className="package-card" key={index}>
-                <div className="package-card__content grid grid-cols-12 p-2 my-2 bg-orange-700">
+                <div className="package-card__content grid grid-cols-12 p-2 mx-2 my-4 bg-slate-500 rounded">
                   <div className="package-card__image-container col-span-3 items-center flex">
                     <Image className="rounded-lg" src={item.image} alt={item.name} width={74} height={74} />
                   </div>

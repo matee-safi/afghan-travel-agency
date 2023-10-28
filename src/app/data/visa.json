@@ -2,56 +2,56 @@
   {
     "id": 1,
     "name": "Turkey Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 2,
     "name": "Pakistan Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 3,
     "name": "Iran Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 4,
     "name": "England Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 5,
     "name": "China Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 6,
     "name": "Germany Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 7,
     "name": "Canada Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   },
   {
     "id": 8,
     "name": "US Visa",
-    "price": 500,
+    "price": "$500",
     "category": "visa",
     "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
   }

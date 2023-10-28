@@ -16,7 +16,7 @@ const services = () => {
             </div>
             <h3 className="text-xl font-bold">Visa Assistance</h3>
             <p className="mb-3">We offer visa assistance for many countries, including Pakistan, Iran, Qatar and, etc.</p>
-            <Link className="btn-primary" href="packages?categoriy=visa">See Visa Packages</Link>
+            <Link className="btn-primary" href="packages?category=visa">See Visa Packages</Link>
           </div>
 
           <div className="text-center flex flex-col items-center my-10">
@@ -25,7 +25,7 @@ const services = () => {
             </div>
             <h3 className="text-xl font-bold">Scholarships</h3>
             <p className="mb-3">We offer Scholarships for many countries, including England, Scotland, Belarus and, etc.</p>
-            <Link className="btn-primary" href="packages?categoriy=scholarship">See Scholarship Packages</Link>
+            <Link className="btn-primary" href="packages?category=scholarship">See Scholarship Packages</Link>
           </div>
 
           <div className="text-center flex flex-col items-center my-10">
@@ -34,7 +34,7 @@ const services = () => {
             </div>
             <h3 className="text-xl font-bold">Tickets</h3>
             <p className="mb-3">We offer Tickets at the lowest rates, for in country and outside the country flights</p>
-            <Link className="btn-primary" href="packages?categoriy=tickets">See Ticket Prices</Link>
+            <Link className="btn-primary" href="packages?category=tickets">See Ticket Prices</Link>
           </div>
 
         </div>

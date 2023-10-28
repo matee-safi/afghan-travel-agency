@@ -20,6 +20,10 @@ body {
   color: #fff;
 }
 
+.bg-primary {
+  background-color: #0f0f0f;
+}
+
 .logo-text {
   font-family: "Bebas Neue", Roboto, sans-serif;
 }
