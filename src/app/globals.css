@@ -89,6 +89,11 @@ body {
   cursor: pointer;
 }
 
+.active {
+  background: #fff;
+  color: #0f0f0f;
+}
+
 .category-tab-text {
   max-width: 20rem;
   white-space: nowrap;
