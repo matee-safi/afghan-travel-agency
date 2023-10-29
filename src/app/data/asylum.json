@@ -1,37 +1,42 @@
 [
   {
+    "category": "asylum",
     "name": "us",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$25000",
-    "process-time": "8-12 months",
+    "processTime": "8-12 months",
     "type": "family"
   },
   {
+    "category": "asylum",
     "name": "us",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$25000",
-    "process-time": "8-12 months",
+    "processTime": "8-12 months",
     "type": "family"
   },
   {
+    "category": "asylum",
     "name": "us",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$25000",
-    "process-time": "8-12 months",
+    "processTime": "8-12 months",
     "type": "family"
   },
   {
+    "category": "asylum",
     "name": "us",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$25000",
-    "process-time": "8-12 months",
+    "processTime": "8-12 months",
     "type": "family"
   },
   {
+    "category": "asylum",
     "name": "us",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$25000",
-    "process-time": "8-12 months",
+    "processTime": "8-12 months",
     "type": "family"
   }
 ]

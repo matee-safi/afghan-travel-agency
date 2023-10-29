@@ -1,36 +1,46 @@
 [
   {
+    "category": "scholarship",
     "name": "United States",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$8000",
+    "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
   },
   {
+    "category": "scholarship",
     "name": "United States",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$8000",
+    "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
   },
   {
+    "category": "scholarship",
     "name": "United States",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$8000",
+    "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
   },
   {
+    "category": "scholarship",
     "name": "United States",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$8000",
+    "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
   },
   {
+    "category": "scholarship",
     "name": "United States",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
     "price": "$8000",
+    "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
   }
