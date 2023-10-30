@@ -19,7 +19,7 @@ const Contact = () => {
           </Link>
           <Link className="btn-hover" href="packages">
             <div className="flex text-lg justify-between p-5">
-              <div className="flex items-center justify-center bg-primary">
+              <div className="flex items-center justify-center bg-black">
                 <div className="relative">
                   <div className="absolute -inset-1 rounded-lg group-hover bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
                   <button className="relative rounded-lg bg-primary px-2 py-1 text-white">See Packages</button>
