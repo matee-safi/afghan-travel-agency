@@ -37,6 +37,15 @@ body {
   font-size: 1.2rem;
 }
 
+.btn-hover {
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-hover:hover {
+  opacity: 1;
+}
+
 .nav {
   z-index: 3;
 }

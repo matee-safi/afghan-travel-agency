@@ -11,7 +11,7 @@ import scholarship from "../data/scholarship.json";
 import asylum from "../data/asylum.json";
 
 export default function Packages() {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("all");
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,6 +27,9 @@ export default function Packages() {
 
   useEffect(() => {
     switch (categoryFromURL) {
+      case "all":
+        setData([...visa, ...ticket, ...scholarship, ...asylum]);
+        break;      
       case "visa":
         setData(visa);
         break;
@@ -59,6 +62,9 @@ export default function Packages() {
     } else {
       // If the search term is empty, show all data
       switch (categoryFromURL) {
+        case "all":
+          setData([...visa, ...ticket, ...scholarship, ...asylum]);
+          break;  
         case "visa":
           setData(visa);
           break;
@@ -126,7 +132,7 @@ export default function Packages() {
         ) : (
           <Link href="/">
             <div className="flex items-center h-12 justify-start pl-3">
-              <Image className="w-fit" src={logo} width={50} height={50} alt="logo" />
+              <Image className="w-fit h-full py-2" src={logo} width={50} height={50} alt="logo" />
               <h1 className="logo-text h-7 pl-px text-2xl">Afghan Travel Agency</h1>
             </div>
           </Link>
@@ -152,8 +158,8 @@ export default function Packages() {
       <div className="container">
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
-            <div className={`${categoryFromURL === null ? "active" : ""} category-tab__item`}>
-              <Link href="/packages">
+            <div className={`${categoryFromURL === "all" || "" ? "active" : ""} category-tab__item`}>
+              <Link href="/packages?category=all">
                 <span className="category-tab-text">All</span>
               </Link>
             </div>
