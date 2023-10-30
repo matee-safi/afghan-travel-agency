@@ -28,10 +28,6 @@ body {
   font-family: "Bebas Neue", Roboto, sans-serif;
 }
 
-input {
-  color: #000;
-}
-
 .btn-primary {
   background: linear-gradient(90deg, #D75274, #ff2d62);
   border-radius: 50px;
@@ -42,7 +38,6 @@ input {
 }
 
 .nav {
-  background-color: #0f0f0f;
   z-index: 3;
 }
 

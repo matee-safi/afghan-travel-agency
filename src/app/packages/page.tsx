@@ -1,23 +1,23 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import '../globals.css';
-import Image from 'next/image';
-import logo from 'public/logo.png';
-import visa from '../data/visa.json';
-import ticket from '../data/ticket.json';
-import scholarship from '../data/scholarship.json';
-import asylum from '../data/asylum.json';
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import "../globals.css";
+import Image from "next/image";
+import logo from "public/logo.png";
+import visa from "../data/visa.json";
+import ticket from "../data/ticket.json";
+import scholarship from "../data/scholarship.json";
+import asylum from "../data/asylum.json";
 
 export default function Packages() {
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState("");
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
   const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const searchParams = useSearchParams();
-  const categoryFromURL = searchParams.get('category');
+  const categoryFromURL = searchParams.get("category");
 
   useEffect(() => {
     if (categoryFromURL) {
@@ -27,16 +27,16 @@ export default function Packages() {
 
   useEffect(() => {
     switch (categoryFromURL) {
-      case 'visa':
+      case "visa":
         setData(visa);
         break;
-      case 'ticket':
+      case "ticket":
         setData(ticket);
         break;
-      case 'scholarship':
+      case "scholarship":
         setData(scholarship);
         break;
-      case 'asylum':
+      case "asylum":
         setData(asylum);
         break;
       default:
@@ -49,23 +49,26 @@ export default function Packages() {
   const performSearch = () => {
     // Filter the data based on the search term
     if (searchTerm) {
-      const filteredData = data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      const filteredData = data.filter((item) => 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.price.toLowerCase().includes(searchTerm.toLowerCase())
+        // item.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setData(filteredData);
     } else {
       // If the search term is empty, show all data
       switch (categoryFromURL) {
-        case 'visa':
+        case "visa":
           setData(visa);
           break;
-        case 'ticket':
+        case "ticket":
           setData(ticket);
           break;
-        case 'scholarship':
+        case "scholarship":
           setData(scholarship);
           break;
-        case 'asylum':
+        case "asylum":
           setData(asylum);
           break;
         default:
@@ -77,7 +80,7 @@ export default function Packages() {
 
   return (
     <main>
-      <nav className="nav sticky top-0 flex justify-between">
+      <nav className={`nav sticky top-0 flex justify-between bg-black ${showSearch ? "bg-green-950": "bg-rose-950"}`}>
         {showSearch ? (
           <div className="flex items-center w-full h-12 justify-start pl-3">
             <Link
@@ -86,7 +89,7 @@ export default function Packages() {
               onClick={() => {
                 setShowSearch(!showSearch);
                 // Reset data when closing the search bar
-                setSearchTerm('');
+                setSearchTerm("");
                 performSearch();
               }}
               aria-label="Close search"
@@ -123,7 +126,7 @@ export default function Packages() {
         ) : (
           <Link href="/">
             <div className="flex items-center h-12 justify-start pl-3">
-              <Image src={logo} width={25} height={25} alt="logo" />
+              <Image className="w-fit" src={logo} width={50} height={50} alt="logo" />
               <h1 className="logo-text h-7 pl-px text-2xl">Afghan Travel Agency</h1>
             </div>
           </Link>
@@ -131,11 +134,9 @@ export default function Packages() {
         <Link
           href="#searching"
           onClick={() => {
-            !showSearch ? setShowSearch(!showSearch) : performSearch();
+            !showSearch ? setShowSearch(!showSearch) : setShowSearch(!showSearch), performSearch()
           }}
           className="invert p-3"
-          aria-label="Search YouTube"
-          aria-haspopup="false"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -151,27 +152,27 @@ export default function Packages() {
       <div className="container">
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
-            <div className={`${categoryFromURL === null ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === null ? "active" : ""} category-tab__item`}>
               <Link href="/packages">
                 <span className="category-tab-text">All</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === 'visa' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === "visa" ? "active" : ""} category-tab__item`}>
               <Link href="/packages?category=visa">
                 <span className="category-tab-text">Visa</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === 'ticket' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === "ticket" ? "active" : ""} category-tab__item`}>
               <Link href="/packages?category=ticket">
                 <span className="category-tab-text">Ticket</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === 'scholarship' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === "scholarship" ? "active" : ""} category-tab__item`}>
               <Link href="/packages?category=scholarship">
                 <span className="category-tab-text">Scholarship</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === 'asylum' ? 'active' : ''} category-tab__item`}>
+            <div className={`${categoryFromURL === "asylum" ? "active" : ""} category-tab__item`}>
               <Link href="/packages?category=asylum">
                 <span className="category-tab-text">Asylum</span>
               </Link>
@@ -184,7 +185,7 @@ export default function Packages() {
           <div className="mt-12 p-2 overflow-none">
             {data.length < 1 && (
               <div className="flex h-40 items-center justify-center">
-                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Sorry! We don't have that kind of package right now</h1>
+                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Sorry! We don&lsquo;t have that kind of package right now</h1>
               </div>
             )}
             {data.map((item, index) => (
