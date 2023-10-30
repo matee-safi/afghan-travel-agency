@@ -86,7 +86,7 @@ export default function Packages() {
 
   return (
     <main>
-      <nav className={`nav sticky top-0 flex justify-between bg-black ${showSearch ? "bg-green-950": "bg-rose-950"}`}>
+      <nav className={`nav sticky top-0 flex justify-between bg-black ${showSearch ? "bg-neutral-800": "bg-primary"}`}>
         {showSearch ? (
           <div className="flex items-center w-full h-12 justify-start pl-3">
             <Link
