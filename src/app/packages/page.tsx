@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import "../globals.css";
@@ -14,18 +14,11 @@ export default function Packages() {
   const [category, setCategory] = useState("all");
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
   const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryFromURL = searchParams.get("category");
 
-  useEffect(() => {
-    if (categoryFromURL) {
-      setCategory(categoryFromURL);
-    }
-  }, [categoryFromURL]);
-
-  useEffect(() => {
+  const setDataCategory = () => {
     switch (categoryFromURL) {
       case "all":
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
@@ -46,23 +39,42 @@ export default function Packages() {
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
         break;
     }
+  }
+
+  useEffect(() => {
+    if (categoryFromURL || category) {
+      setCategory(categoryFromURL);
+    }
   }, [categoryFromURL]);
+
+  useEffect(() => {
+    setDataCategory()
+    }, [category]);
+
+  useEffect(() => {
+    if (searchParams.get("search")) {
+      performSearch(searchParams.get("search"));
+    } else {
+      setData([...visa, ...ticket, ...scholarship, ...asylum]);
+    }
+  }
+  , [searchParams.get("search")]);
+
 
   // Search function
   const performSearch = (input: string) => {
+    const allData = [...visa, ...ticket, ...scholarship, ...asylum];
+    setData(allData);
     const searchParams = new URLSearchParams();
-    searchParams.set('result', input);
+    searchParams.set('search', input);
     router.push(`/packages?${searchParams.toString()}`);
-    setData([...visa, ...ticket, ...scholarship, ...asylum])
-    setSearchTerm(input);
-    const filteredData = data.filter((item) => 
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.price.toLowerCase().includes(searchTerm.toLowerCase())
-      // item.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = allData.filter((item) =>
+      item.name.toLowerCase().includes(input.toLowerCase()) ||
+      item.category.toLowerCase().includes(input.toLowerCase()) ||
+      item.price.toLowerCase().includes(input.toLowerCase())
+      // item.description.toLowerCase().includes(input.toLowerCase())
     );
     setData(filteredData);
-    setShowSearch(!showSearch);
   };
 
   const handleSearch = (e: any) => {
@@ -71,7 +83,10 @@ export default function Packages() {
     }
     if (e.type === 'submit') {
       e.preventDefault();
-      e.target.search.value && performSearch(e.target.search.value);
+      if (e.target.search.value) {
+        performSearch(e.target.search.value);
+        setShowSearch(!showSearch);
+      }
     }
   };
 
@@ -183,7 +198,7 @@ export default function Packages() {
       </div>
       <section id="packages">
         <div className="container">
-          <div className="mt-12 p-2 overflow-none">
+          <div className="mt-10 p-2 overflow-none">
             {data.length < 1 && (
               <div className="flex h-40 items-center justify-center">
                 <h1 className="text-xl text-gray-500 font-bold text-center p-6">Sorry! We don&lsquo;t have that kind of package right now</h1>
@@ -208,6 +223,9 @@ export default function Packages() {
             ))}
           </div>
         </div>
+        <footer>
+          <p className="text-center pb-2">© 2023. All rights reserved by ATA</p>
+        </footer>
       </section>
     </main>
   );
