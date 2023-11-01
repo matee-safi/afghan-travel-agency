@@ -3,34 +3,7 @@
     "category": "scholarship",
     "name": "United States",
     "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
-    "price": "$8000",
-    "processTime": "8-12 months",
-    "degree": "Masters",
-    "university": "University of California, Berkeley"
-  },
-  {
-    "category": "scholarship",
-    "name": "United States",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
-    "price": "$8000",
-    "processTime": "8-12 months",
-    "degree": "Masters",
-    "university": "University of California, Berkeley"
-  },
-  {
-    "category": "scholarship",
-    "name": "United States",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
-    "price": "$8000",
-    "processTime": "8-12 months",
-    "degree": "Masters",
-    "university": "University of California, Berkeley"
-  },
-  {
-    "category": "scholarship",
-    "name": "United States",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
-    "price": "$8000",
+    "price": "$30000",
     "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
@@ -39,7 +12,34 @@
     "category": "scholarship",
     "name": "Germany",
     "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
-    "price": "$8000",
+    "price": "$28000",
+    "processTime": "8-12 months",
+    "degree": "Masters",
+    "university": "University of California, Berkeley"
+  },
+  {
+    "category": "scholarship",
+    "name": "Italy",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
+    "price": "$5500",
+    "processTime": "8-12 months",
+    "degree": "Masters",
+    "university": "University of California, Berkeley"
+  },
+  {
+    "category": "scholarship",
+    "name": "United Kingdom",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
+    "price": "$18000",
+    "processTime": "8-12 months",
+    "degree": "Masters",
+    "university": "University of California, Berkeley"
+  },
+  {
+    "category": "scholarship",
+    "name": "Belarus",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1",
+    "price": "$6000",
     "processTime": "8-12 months",
     "degree": "Masters",
     "university": "University of California, Berkeley"
