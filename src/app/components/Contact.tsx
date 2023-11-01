@@ -17,7 +17,7 @@ const Contact = () => {
               </div>
             </div>
           </Link>
-          <Link className="btn-hover" href="packages">
+          <Link className="btn-hover" href="packages?category=all">
             <div className="flex text-lg justify-between p-5">
               <div className="flex items-center justify-center bg-black">
                 <div className="relative">
