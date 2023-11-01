@@ -22,7 +22,6 @@ export default function Packages() {
     switch (categoryFromURL) {
       case "all":
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        data.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "visa":
         setData(visa);
@@ -38,30 +37,17 @@ export default function Packages() {
         break;
       default:
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        data.sort((a, b) => a.name.localeCompare(b.name));
         break;
     }
   }
 
   useEffect(() => {
-    if (categoryFromURL || category) {
-      setCategory(categoryFromURL ?? "all");
+    if(searchParams.get("search")) {
+      performSearch(searchParams.get("search"));
+    } else if (categoryFromURL || category) {
+      setDataCategory();
     }
   }, [categoryFromURL]);
-
-  useEffect(() => {
-    setDataCategory()
-    }, [category]);
-
-    useEffect(() => {
-      const searchValue = searchParams.get("search");
-      if (searchValue) {
-        performSearch(searchValue);
-      } else {
-        setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        data.sort((a, b) => a.name.localeCompare(b.name));
-      }
-    }, [searchParams.get("search")]);
 
   // Search function
   const performSearch = (input: string) => {
@@ -171,27 +157,27 @@ export default function Packages() {
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
             <div className={`${categoryFromURL === "all" || "" ? "active" : ""} category-tab__item`}>
-              <Link href="/packages?category=all">
+              <Link className="p-3" href="/packages?category=all">
                 <span className="category-tab-text">All</span>
               </Link>
             </div>
             <div className={`${categoryFromURL === "visa" ? "active" : ""} category-tab__item`}>
-              <Link href="/packages?category=visa">
+              <Link className="p-3" href="/packages?category=visa">
                 <span className="category-tab-text">Visa</span>
               </Link>
             </div>
             <div className={`${categoryFromURL === "ticket" ? "active" : ""} category-tab__item`}>
-              <Link href="/packages?category=ticket">
+              <Link className="p-3" href="/packages?category=ticket">
                 <span className="category-tab-text">Ticket</span>
               </Link>
             </div>
             <div className={`${categoryFromURL === "scholarship" ? "active" : ""} category-tab__item`}>
-              <Link href="/packages?category=scholarship">
+              <Link className="p-3" href="/packages?category=scholarship">
                 <span className="category-tab-text">Scholarship</span>
               </Link>
             </div>
             <div className={`${categoryFromURL === "asylum" ? "active" : ""} category-tab__item`}>
-              <Link href="/packages?category=asylum">
+              <Link className="p-3" href="/packages?category=asylum">
                 <span className="category-tab-text">Asylum</span>
               </Link>
             </div>
@@ -203,7 +189,7 @@ export default function Packages() {
           <div className="mt-10 p-2 overflow-none">
             {data.length < 1 && (
               <div className="flex h-40 items-center justify-center">
-                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Sorry! We don&lsquo;t have that kind of package right now</h1>
+                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
               </div>
             )}
             {data.map((item, index) => (
@@ -225,9 +211,6 @@ export default function Packages() {
             ))}
           </div>
         </div>
-        <footer>
-          <p className="text-center pb-2">© 2023. All rights reserved by ATA</p>
-        </footer>
       </section>
     </main>
   );

@@ -231,7 +231,6 @@ path.two {
   transition: background-color .5s cubic-bezier(.05,0,0,1);
   height: 32px;
   text-align: center;
-  padding: 0 12px;
   margin-right: 8px;
   display: -webkit-box;
   display: -webkit-flex;
