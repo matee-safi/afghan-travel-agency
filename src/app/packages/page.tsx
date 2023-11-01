@@ -45,10 +45,10 @@ export default function Packages() {
     const searchValue = searchParams.get("search");
     if (searchValue !== null) {
       performSearch(searchValue);
-    } else if (categoryFromURL || category) {
+    } else if (categoryFromURL) {
       setDataCategory();
     }
-  }, [categoryFromURL, category, searchParams]);
+  }, [categoryFromURL, searchParams]);
 
   // Search function
   const performSearch = (input: string) => {
