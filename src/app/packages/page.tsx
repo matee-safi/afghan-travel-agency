@@ -42,12 +42,13 @@ export default function Packages() {
   }
 
   useEffect(() => {
-    if(searchParams.get("search")) {
-      performSearch(searchParams.get("search"));
+    const searchValue = searchParams.get("search");
+    if (searchValue !== null) {
+      performSearch(searchValue);
     } else if (categoryFromURL || category) {
       setDataCategory();
     }
-  }, [categoryFromURL]);
+  }, [categoryFromURL, category, searchParams]);
 
   // Search function
   const performSearch = (input: string) => {
