@@ -53,16 +53,15 @@ export default function Packages() {
     setDataCategory()
     }, [category]);
 
-  useEffect(() => {
-    if (searchParams.get("search")) {
-      performSearch(searchParams.get("search"));
-    } else {
-      setData([...visa, ...ticket, ...scholarship, ...asylum]);
-      data.sort((a, b) => a.name.localeCompare(b.name));
-    }
-  }
-  , [searchParams.get("search")]);
-
+    useEffect(() => {
+      const searchValue = searchParams.get("search");
+      if (searchValue) {
+        performSearch(searchValue);
+      } else {
+        setData([...visa, ...ticket, ...scholarship, ...asylum]);
+        data.sort((a, b) => a.name.localeCompare(b.name));
+      }
+    }, [searchParams.get("search")]);
 
   // Search function
   const performSearch = (input: string) => {
