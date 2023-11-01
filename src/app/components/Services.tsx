@@ -44,7 +44,7 @@ const services = () => {
             </div>
             <h3 className="text-xl font-bold">Asylum</h3>
             <p className="mb-3">We offer Asylum Offers to a varaity of countries with great conditions, you can be block your money at an agiotage of your choice and pay us when you arrive at your destination.</p>
-            <Link className="btn-primary" href="packages?category=ticket">See Asylum Packages</Link>
+            <Link className="btn-primary" href="packages?category=asylum">See Asylum Packages</Link>
           </div>
 
         </div>
