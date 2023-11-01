@@ -24,7 +24,7 @@ const services = () => {
             <div className="p-10 w-fit bg-cyan-500 m-5 rounded-full flex items-center justify-center">
               <Image src={scholarship} alt="Visa" />
             </div>
-            <h3 className="text-xl font-bold">Scholarships</h3>
+            <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">Scholarships</h3>
             <p className="mb-3">We offer Scholarships for many countries, including England, Scotland, Belarus and, etc. Our team of professional consultants will help you on every step of your journey.</p>
             <Link className="btn-primary" href="packages?category=scholarship">See Scholarship Packages</Link>
           </div>
@@ -33,7 +33,7 @@ const services = () => {
             <div className="p-10 w-fit bg-cyan-500 m-5 rounded-full flex items-center justify-center">
               <Image src={ticket} alt="Visa" />
             </div>
-            <h3 className="text-xl font-bold">Tickets</h3>
+            <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">Tickets</h3>
             <p className="mb-3">We specialize in providing the lowest-rate tickets for both national and international flights, ensuring affordable travel options for all your destinations.</p>
             <Link className="btn-primary" href="packages?category=ticket">See Ticket Packages</Link>
           </div>
@@ -42,7 +42,7 @@ const services = () => {
             <div className="p-10 w-fit bg-cyan-500 m-5 rounded-full flex items-center justify-center">
               <Image width={128} height={128} src={immigration} alt="Visa" />
             </div>
-            <h3 className="text-xl font-bold">Asylum</h3>
+            <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">Asylum</h3>
             <p className="mb-3">We offer Asylum Offers to a varaity of countries with great conditions, you can be block your money at an agiotage of your choice and pay us when you arrive at your destination.</p>
             <Link className="btn-primary" href="packages?category=asylum">See Asylum Packages</Link>
           </div>
