@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
               ></Typewriter>
             )}{" "}
           </p>
-          <Link href="packages">
+          <Link href="packages?category=all">
             <div className="wrapper">
               <a className="cta" href="#">
                 <span className="">See Packages</span>

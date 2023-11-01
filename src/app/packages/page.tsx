@@ -11,7 +11,6 @@ import scholarship from "../data/scholarship.json";
 import asylum from "../data/asylum.json";
 
 export default function Packages() {
-  const [category, setCategory] = useState("all");
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
   const [showSearch, setShowSearch] = useState(false);
   const searchParams = useSearchParams();
@@ -48,7 +47,7 @@ export default function Packages() {
     } else if (categoryFromURL) {
       setDataCategory();
     }
-  }, [categoryFromURL, searchParams]);
+  }, [categoryFromURL, searchParams, useSearchParams()]);
 
   // Search function
   const performSearch = (input: string) => {
