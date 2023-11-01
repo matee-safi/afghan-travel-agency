@@ -1,37 +1,47 @@
 [
   {
+    "category": "ticket",
     "name": "kabul - islamabad",
     "type": "two way",
-    "price": "$1000",
+    "price": "$400",
+    "processTime": "8-12 months",
     "time": "2 hours",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
   },
   {
-    "name": "kabul - islamabad",
+    "category": "ticket",
+    "name": "kabul - Tehran",
     "type": "two way",
-    "price": "$1000",
+    "price": "$300",
+    "processTime": "8-12 months",
     "time": "2 hours",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
   },
   {
-    "name": "kabul - islamabad",
+    "category": "ticket",
+    "name": "kabul - Riyadh",
     "type": "two way",
-    "price": "$1000",
+    "price": "$700",
+    "processTime": "8-12 months",
     "time": "2 hours",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
   },
   {
-    "name": "kabul - islamabad",
+    "category": "ticket",
+    "name": "kabul - Mazaar",
     "type": "two way",
-    "price": "$1000",
+    "price": "$130",
+    "processTime": "8-12 months",
     "time": "2 hours",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
   },
   {
-    "name": "kabul - islamabad",
+    "category": "ticket",
+    "name": "kabul - Abu Dhabi",
     "type": "two way",
-    "price": "$1000",
+    "price": "$170",
+    "processTime": "8-12 months",
     "time": "2 hours",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg"
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
   }
 ]

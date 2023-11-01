@@ -2,7 +2,7 @@ const About = () => {
   return (
     <section id="about">
       <div className="container">
-        <h1 className="text-2xl m-5">About Us</h1>
+      <h1 className="m-5 text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-900 to-red-400">About Us</h1>
         <p className="m-5">At Afghan Travel Agency, with over a decade of experience, we&apos;re dedicated to simplifying your travel dreams. We offer reliable visa assistance, the lowest ticket prices, and exclusive scholarships to Europe. Plus, our full refund policy ensures your journey is stress-free.</p>
         <p className="m-5">You can find our location in the interactive map below.</p>
       </div>

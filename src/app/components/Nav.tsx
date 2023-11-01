@@ -4,10 +4,10 @@ import logo from 'public/logo.png';
 
 const Nav = () => {
   return (
-    <nav className="nav sticky top-0">
+    <nav className="nav bg-primary sticky top-0">
       <Link href="/">
         <div className="flex items-center h-12 justify-center">
-          <Image src={logo} width={25} height={25} alt="logo" />
+        <Image className="w-fit h-full py-2" src={logo} width={50} height={50} alt="logo" />
           <h1 className="logo-text h-7 pl-px text-2xl">Afghan Travel Agency</h1>
         </div>
       </Link>

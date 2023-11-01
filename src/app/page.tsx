@@ -18,8 +18,6 @@ export default function Home() {
       <Contact />
       <Footer />
       {/* create an animated cursor */}
-      {/* create a loading screen on start */}
-      {/* make an animated subheadline that writes and erases on loop */}
       {/* moving objects in the background */}
     </main>
   )
