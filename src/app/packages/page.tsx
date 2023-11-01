@@ -45,7 +45,7 @@ export default function Packages() {
 
   useEffect(() => {
     if (categoryFromURL || category) {
-      setCategory(categoryFromURL);
+      setCategory(categoryFromURL ?? "all");
     }
   }, [categoryFromURL]);
 
@@ -69,7 +69,7 @@ export default function Packages() {
     const allData = [...visa, ...ticket, ...scholarship, ...asylum];
     setData(allData);
     const searchParams = new URLSearchParams();
-    searchParams.set('search', input);
+    searchParams.set("search", input);
     router.push(`/packages?${searchParams.toString()}`);
     const filteredData = allData.filter((item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
@@ -81,10 +81,10 @@ export default function Packages() {
   };
 
   const handleSearch = (e: any) => {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       setShowSearch(!showSearch);
     }
-    if (e.type === 'submit') {
+    if (e.type === "submit") {
       e.preventDefault();
       if (e.target.search.value) {
         performSearch(e.target.search.value);
