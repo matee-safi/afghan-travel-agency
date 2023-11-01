@@ -22,6 +22,7 @@ export default function Packages() {
     switch (categoryFromURL) {
       case "all":
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
+        data.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case "visa":
         setData(visa);
@@ -37,6 +38,7 @@ export default function Packages() {
         break;
       default:
         setData([...visa, ...ticket, ...scholarship, ...asylum]);
+        data.sort((a, b) => a.name.localeCompare(b.name));
         break;
     }
   }
@@ -56,6 +58,7 @@ export default function Packages() {
       performSearch(searchParams.get("search"));
     } else {
       setData([...visa, ...ticket, ...scholarship, ...asylum]);
+      data.sort((a, b) => a.name.localeCompare(b.name));
     }
   }
   , [searchParams.get("search")]);

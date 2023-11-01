@@ -15,7 +15,7 @@ const services = () => {
             <div className="p-10 w-fit bg-cyan-500 m-5 rounded-full flex items-center justify-center">
               <Image src={visa} alt="Visa" />
             </div>
-            <h3 className="text-xl font-bold">Visa Assistance</h3>
+            <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">Visa Assistance</h3>
             <p className="mb-3">We offer visa assistance for many countries, including Pakistan, Iran, Qatar and, etc. You can see all of our Visa packages and their prices by pressing the button bellow.</p>
             <Link className="btn-primary" href="packages?category=visa">See Visa Packages</Link>
           </div>
