@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
           <p className="text-3xl text-center mt-20 mx-10 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
-          <p className="text-xl flex pl-9 m-2 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+          <p className="text-2xl font-bold flex pl-9 m-2 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
             Our Services are&nbsp;<span>{""}</span>
             {isClient && (
               <Typewriter
