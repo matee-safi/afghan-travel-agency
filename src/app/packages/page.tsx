@@ -11,7 +11,7 @@ import scholarship from "../data/scholarship.json";
 import asylum from "../data/asylum.json";
 
 export default function Packages() {
-  const [category, setCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
   const [showSearch, setShowSearch] = useState(false);
   const searchParams = useSearchParams();
@@ -45,10 +45,12 @@ export default function Packages() {
     const searchValue = searchParams.get("search");
     if (searchValue !== null) {
       performSearch(searchValue);
+      setSearchTerm(searchValue);
     } else if (categoryFromURL) {
       setDataCategory();
+      setSearchTerm("");
     }
-  }, [categoryFromURL, searchParams]);
+  }, [categoryFromURL, searchParams, useSearchParams()]);
 
   // Search function
   const performSearch = (input: string) => {
@@ -70,9 +72,10 @@ export default function Packages() {
     if (e.key === "Escape") {
       setShowSearch(!showSearch);
     }
-    if (e.type === "submit") {
+    else if (e.type === "submit") {
       e.preventDefault();
       if (e.target.search.value) {
+        setSearchTerm(e.target.search.value);
         performSearch(e.target.search.value);
         setShowSearch(!showSearch);
       }
@@ -81,13 +84,14 @@ export default function Packages() {
 
   return (
     <main>
-      <nav className={`nav sticky top-0 ${showSearch ? "bg-neutral-800": "bg-primary"}`}>
+      <nav className="nav sticky top-0 bg-primary">
         {showSearch ? (
-          <div className="flex items-center w-full h-12 justify-start pl-3">
+          <div className="flex items-center w-full h-12 bg-[#212121] justify-start pl-3">
             <button
               className="invert pr-3"
               onClick={() => {
                 setShowSearch(!showSearch);
+                setSearchTerm(searchParams.get("search") || "");
               }}
               aria-label="Close search"
             >
@@ -105,14 +109,17 @@ export default function Packages() {
               className="w-full flex items-center"
               onSubmit={(e) => handleSearch(e)}
             >
-                <input
-                  className="h-8 w-full px-3 text-sm text-gray-700 placeholder-gray-600 rounded-full focus:outline-none focus:border-primary"
-                  name="search"
-                  autoFocus={true}
-                  type="search"
-                  placeholder="Search"
-                  onKeyDown={(e) => handleSearch(e)}
-                />
+              <input
+                id="search"
+                className="h-8 w-full px-3 bg-[#383838] text-sm rounded-full focus:outline-none focus:border-primary"
+                name="search"
+                autoFocus={true}
+                type="search"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => handleSearch(e)}
+              />
               <button
                 className="invert p-3"
                 type="submit"
@@ -130,27 +137,72 @@ export default function Packages() {
             </form>
           </div>
         ) : (
-          <div className="flex justify-between">
-            <Link href="/">
-              <div className="flex items-center h-12 justify-start pl-3">
-                <Image className="w-fit h-full py-2" src={logo} width={50} height={50} alt="logo" />
-                <h1 className="logo-text h-7 pl-px text-2xl">Afghan Travel Agency</h1>
+            <div>
+              {searchTerm ? (
+                <div>
+                  <div className="flex items-center h-12 justify-start pl-2">
+                    <Link href="/">
+                      <Image className="w- h-full p-1" src={logo} width={50} height={50} alt="logo" />
+                    </Link>
+                    <form
+                      className="w-full flex items-center"
+                      action="submit"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        performSearch(searchTerm);
+                      }}
+                    >
+                      <input
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onFocus={() => {
+                        setShowSearch(!showSearch);
+                        
+                      }}
+                      type="search"
+                      className="h-8 bg-neutral-800 text-white w-full px-3 ml-1 text-sm text-gray-700 rounded-full focus:outline-none focus:border-primary"
+                      />
+                    <button
+                      className="invert p-3"
+                      type="submit"
+                      >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        enable-background="new 0 0 24 24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        >
+                        <path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
+                      </svg>
+                    </button>
+                  </form>
+                </div>
               </div>
-            </Link>
-            <button
-              onClick={() => setShowSearch(!showSearch)}
-              className="invert p-3"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                enable-background="new 0 0 24 24"
-                height="24"
-                viewBox="0 0 24 24"
-                width="24"
-              >
-                <path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
-              </svg>
-            </button>
+              ) : (
+              <div className="flex justify-between">
+                <Link href="/">
+                  <div className="flex items-center h-12 justify-start pl-3">
+                    <Image className="w-fit h-full py-2" src={logo} width={50} height={50} alt="logo" />
+                    <h1 className="logo-text h-7 pl-px text-2xl">Afghan Travel Agency</h1>
+                  </div>
+                </Link>
+                <button
+                  onClick={() => setShowSearch(!showSearch)}
+                  className="invert p-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    enable-background="new 0 0 24 24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z"></path>
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         )}
       </nav>

@@ -17,19 +17,19 @@ const Hero: React.FC = () => {
           <p className="text-3xl text-center mt-20 mx-10 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
-          <p className="text-xl flex m-8 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-            Our Services are&nbsp; <span className="typewriter-text">{" "}</span>
+          <p className="text-2xl font-bold flex pl-9 m-2 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+            Our Services are&nbsp;<span>{""}</span>
             {isClient && (
               <Typewriter
                 options={{
-                  strings: [" Secure", "Timely", "Reliable"],
+                  strings: ["Secure", "Timely", "Reliable"],
                   autoStart: true,
                   loop: true,
                 }}
               ></Typewriter>
-            )}{" "}
+            )}
           </p>
-          <Link href="packages">
+          <Link href="packages?category=all">
             <div className="wrapper">
               <a className="cta" href="#">
                 <span className="">See Packages</span>
