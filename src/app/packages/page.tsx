@@ -91,6 +91,7 @@ export default function Packages() {
               className="invert pr-3"
               onClick={() => {
                 setShowSearch(!showSearch);
+                setSearchTerm(searchParams.get("search") || "");
               }}
               aria-label="Close search"
             >
