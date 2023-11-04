@@ -293,6 +293,7 @@ path.two {
 .package-card-image-container img {
   height: 74px;
   width: 100%;
+  object-fit: cover;
 }
 
 .popup {

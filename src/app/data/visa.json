@@ -2,10 +2,10 @@
   {
     "id": 1,
     "name": "Pakistan Visa",
-    "headline": "Tourist 6 months",
+    "headline": "Tourism 6 months",
     "processTime": "24 - 72 hours",
     "price": "$1,250",
-    "image": "https://t4.ftcdn.net/jpg/04/15/05/17/360_F_415051795_wKolxKkPr2tS7fnMKOQouqUecOHMuAjh.jpg",
+    "image": "https://i.pinimg.com/564x/d1/a9/1f/d1a91f76f0b136f089b7a8168530c253.jpg",
     "requiredDocs": [
       "ID Card",
       "Passport",
@@ -19,21 +19,21 @@
     "headline": "Medical 3 months (Multiple)",
     "processTime": "24 - 72 hours",
     "price": "$950",
-    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "image": "https://i.pinimg.com/564x/d1/a9/1f/d1a91f76f0b136f089b7a8168530c253.jpg",
     "requiredDocs": [
       "ID Card",
       "Passport",
       "Photo"
     ],
-    "description": "This is a Medical Visa for 3 months. This is a Multiple Entry Visa."
+    "description": "This is a Medical Visa for 3 months with Multiple Entries."
   },
   {
     "id": 3,
     "name": "Italy Visa",
-    "headline": "Afg - Saudi - Italy",
+    "headline": "Tourism",
     "processTime": "10 Work Days",
     "price": "$28,000",
-    "image": "https://www.state.gov/wp-content/uploads/2019/04/shutterstock_720444505v2-2208x1406-1.jpg",
+    "image": "https://i.pinimg.com/564x/a0/e1/b5/a0e1b5740eafe0e0c9969ef1b18b66f5.jpg",
     "requiredDocs": [
       "ID Card",
       "Passport",
@@ -59,7 +59,7 @@
   {
     "id": 5,
     "name": "Turkey Visa",
-    "headline": "Business 1 month/3months",
+    "headline": "Business 1 month/3 months",
     "processTime": "20 - 25 Days",
     "price": "$5,499",
     "image": "https://i.pinimg.com/564x/ab/37/84/ab37845ab50561c6226722df5a6b1339.jpg",
@@ -68,6 +68,49 @@
       "Passport",
       "Photo",
       "Business License"
+    ],
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "Iran Visa",
+    "headline": "Business 6 months/1 year",
+    "processTime": "1 Week",
+    "price": "AF10,500/AF15,000",
+    "image": "https://i.pinimg.com/564x/80/3e/e1/803ee18dbc84a4ee63629efeb436ac7b.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "Moscow Visa",
+    "headline": "Work 1 year",
+    "processTime": "25 Days",
+    "price": "$????",
+    "image": "https://i.pinimg.com/564x/ba/f5/63/baf5632599899341430b077d0469170f.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "The monthly salary of this job will be between $600 - $1000 depending on your work ethic.You will have to pay for your Iran Visa and Tickets separately."
+  },
+  {
+    "id": 6,
+    "name": "Kazakhstan Visa",
+    "headline": "1 month",
+    "processTime": "30 Days",
+    "price": "$3,600",
+    "image": "https://i.pinimg.com/564x/b4/67/99/b46799d6ee12327019e6362b3bd21f59.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
     ],
     "description": ""
   }

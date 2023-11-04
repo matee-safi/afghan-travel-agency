@@ -30,13 +30,13 @@ export default function Packages() {
     document.body.style.overflow = 'auto'; // Enable scrolling on the body
   };
 
-  const handlePopupClick = (e) => {
+  const handlePopupClick = (e: React.MouseEvent) => {
+    const target = e.target as Element;
     // Check if the click occurred outside the popup content
-    if (!e.target.closest('.popup-content')) {
+    if (!target.closest('.popup-content')) {
       closePopup();
     }
   };
-
 
   const setDataCategory = () => {
     switch (categoryFromURL) {
@@ -81,9 +81,8 @@ export default function Packages() {
     router.push(`/packages?${searchParams.toString()}`);
     const filteredData = allData.filter((item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
-      item.category.toLowerCase().includes(input.toLowerCase()) ||
-      item.price.toLowerCase().includes(input.toLowerCase())
-      // item.description.toLowerCase().includes(input.toLowerCase())
+      item.price.toLowerCase().includes(input.toLowerCase()) ||
+      item.description.toLowerCase().includes(input.toLowerCase())
     );
     setData(filteredData);
   };
@@ -268,8 +267,8 @@ export default function Packages() {
             {data.map((item, index) => (
               <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
                 <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
-                  <div className="package-card-image-container col-span-3 items-center flex py-1 pr-2">
-                    <Image className="rounded-lg h-full max-h- w-full" src={item.image} alt={item.name} width={100} height={100} />
+                  <div className="package-card-image-container col-span-3 py-1 pr-2">
+                    <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={100} loading="lazy" />
                   </div>
                   <div className="col-span-8 flex flex-col items-start justify-start">
                     <h3 className="package-card-title font-bold">{item.name}</h3>
@@ -298,7 +297,7 @@ export default function Packages() {
               <h2 className="text-2xl font-semibold text-center">
                 {data[selectedPackage].name}
               </h2>
-              <Image className="my-4 rounded-lg popup-image" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={50} />
+              <Image className="my-4 rounded-lg popup-image" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={50} loading="lazy" />
               <div className="popup-price my-2 font-bold flex justify-between font-price price">
                 <h3>
                   Process Time: {data[selectedPackage].processTime}
