@@ -87,7 +87,7 @@
     "description": ""
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Moscow Visa",
     "headline": "Work 1 year",
     "processTime": "25 Days",
@@ -101,7 +101,7 @@
     "description": "The monthly salary of this job will be between $600 - $1000 depending on your work ethic.You will have to pay for your Iran Visa and Tickets separately."
   },
   {
-    "id": 6,
+    "id": 8,
     "name": "Kazakhstan Visa",
     "headline": "1 month",
     "processTime": "30 Days",
@@ -113,5 +113,33 @@
       "Photo"
     ],
     "description": ""
+  },
+  {
+    "id": 9,
+    "name": "Qatar Visa",
+    "headline": "3 months",
+    "processTime": "10 - 15 Days",
+    "price": "$500",
+    "image": "https://i.pinimg.com/564x/4d/51/f6/4d51f6e8ab90490fc18bdb38a2525004.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": ""
+  },
+  {
+    "id": 10,
+    "name": "Oman Visa",
+    "headline": "2 years",
+    "processTime": "10 - 15 Days",
+    "price": "$500",
+    "image": "https://i.pinimg.com/564x/50/ed/2c/50ed2c27cd90c7bd10b917e5482541a0.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "With this package you will get a one month visa plus two year residency."
   }
 ]

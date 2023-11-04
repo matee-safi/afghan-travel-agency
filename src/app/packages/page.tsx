@@ -268,7 +268,7 @@ export default function Packages() {
               <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
                 <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
                   <div className="package-card-image-container col-span-3 py-1 pr-2">
-                    <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={100} loading="lazy" />
+                    <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
                   </div>
                   <div className="col-span-8 flex flex-col items-start justify-start">
                     <h3 className="package-card-title font-bold">{item.name}</h3>
