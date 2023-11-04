@@ -22,12 +22,12 @@ export default function Packages() {
 
   const openPopup = (index: any) => {
     setSelectedPackage(index);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling on the body
+    document.body.classList.add('no-scroll'); // Add the CSS class to disable scrolling
   };
-
+  
   const closePopup = () => {
     setSelectedPackage(null);
-    document.body.style.overflow = 'auto'; // Enable scrolling on the body
+    document.body.classList.remove('no-scroll'); // Remove the CSS class to enable scrolling
   };
 
   const handlePopupClick = (e: React.MouseEvent) => {
