@@ -1,66 +1,74 @@
 [
   {
     "id": 1,
-    "name": "Turkey Visa",
-    "price": "$6500",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Pakistan Visa",
+    "headline": "Tourist 6 months",
+    "processTime": "24 - 72 hours",
+    "price": "$1,250",
+    "image": "https://t4.ftcdn.net/jpg/04/15/05/17/360_F_415051795_wKolxKkPr2tS7fnMKOQouqUecOHMuAjh.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": ""
   },
   {
     "id": 2,
     "name": "Pakistan Visa",
-    "price": "$1250",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "headline": "Medical 3 months (Multiple)",
+    "processTime": "24 - 72 hours",
+    "price": "$950",
+    "image": "https://cdn.enjoytravel.com/img/travel-news/the-faisal-mosque-features-islamic-architecture-styles.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "This is a Medical Visa for 3 months. This is a Multiple Entry Visa."
   },
   {
     "id": 3,
-    "name": "Iran Visa",
-    "price": "$500",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Italy Visa",
+    "headline": "Afg - Saudi - Italy",
+    "processTime": "10 Work Days",
+    "price": "$28,000",
+    "image": "https://www.state.gov/wp-content/uploads/2019/04/shutterstock_720444505v2-2208x1406-1.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "With this package you will block your money in Shahzada Market. and in the process you will first travel to saudi arabia, then to italy. and the money will be released once you arrive at your destination."
   },
   {
     "id": 4,
-    "name": "England Visa",
-    "price": "$26000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "China Visa",
+    "headline": "Business Visa",
+    "processTime": "25 Work Days",
+    "price": "$1,200/$1,550",
+    "image": "https://i.pinimg.com/736x/59/16/4a/59164a729aff0cff728187c4479266ae.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": "For those passports that have been issued in the past, the price is $1200 otherwise, the price is $1550."
   },
   {
     "id": 5,
-    "name": "China Visa",
-    "price": "1100",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
-  },
-  {
-    "id": 6,
-    "name": "Germany Visa",
-    "price": "$28000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
-  },
-  {
-    "id": 7,
-    "name": "Canada Visa",
-    "price": "$35000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
-  },
-  {
-    "id": 8,
-    "name": "US Visa",
-    "price": "$30000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Turkey Visa",
+    "headline": "Business 1 month/3months",
+    "processTime": "20 - 25 Days",
+    "price": "$5,499",
+    "image": "https://i.pinimg.com/564x/ab/37/84/ab37845ab50561c6226722df5a6b1339.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": ""
   }
 ]
