@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -14,6 +18,14 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.hero-bg {
+  /* background: url('https://t3.ftcdn.net/jpg/04/28/08/38/240_F_428083893_HZ7mGYJPaohTnU73H3FOAPVR4FlsqHby.jpg') no-repeat center center/cover; */
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -241,7 +253,7 @@ path.two {
   overflow-x: auto;
 }
 
-.category-tab__item {
+.category-tab-item {
   background-color: rgba(255,255,255,0.1);
   color: #f1f1f1;
   -webkit-transition: background-color .5s cubic-bezier(.05,0,0,1);
@@ -279,4 +291,66 @@ path.two {
 
 .price {
   /* font-size: 9px; */
+}
+
+.package-card-image-container img {
+  height: 74px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+  opacity: 0;
+  transform: scale(0);
+  padding: 0 5%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: start;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s ease-in-out;
+  overflow-y: auto;
+}
+
+.popup-content {
+  transition: all 0.2s ease-in-out;
+  transform: scale(0);
+  opacity: 0;
+  width: 100%;
+  max-width: 800px;
+  background: whitesmoke;
+  color: black;
+  border-radius: 10px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.popup-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.pop {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

@@ -1,66 +1,145 @@
 [
   {
     "id": 1,
-    "name": "Turkey Visa",
-    "price": "$6500",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Pakistan Visa",
+    "headline": "Tourism 6 months",
+    "processTime": "24 - 72 hours",
+    "price": "$1,250",
+    "image": "https://i.pinimg.com/564x/d1/a9/1f/d1a91f76f0b136f089b7a8168530c253.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": ""
   },
   {
     "id": 2,
     "name": "Pakistan Visa",
-    "price": "$1250",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "headline": "Medical 3 months (Multiple)",
+    "processTime": "24 - 72 hours",
+    "price": "$950",
+    "image": "https://i.pinimg.com/564x/d1/a9/1f/d1a91f76f0b136f089b7a8168530c253.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "This is a Medical Visa for 3 months with Multiple Entries."
   },
   {
     "id": 3,
-    "name": "Iran Visa",
-    "price": "$500",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Italy Visa",
+    "headline": "Tourism",
+    "processTime": "10 Work Days",
+    "price": "$28,000",
+    "image": "https://i.pinimg.com/564x/a0/e1/b5/a0e1b5740eafe0e0c9969ef1b18b66f5.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "With this package you will block your money in Shahzada Market. and in the process you will first travel to saudi arabia, then to italy. and the money will be released once you arrive at your destination."
   },
   {
     "id": 4,
-    "name": "England Visa",
-    "price": "$26000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "China Visa",
+    "headline": "Business Visa",
+    "processTime": "25 Work Days",
+    "price": "$1,200/$1,550",
+    "image": "https://i.pinimg.com/736x/59/16/4a/59164a729aff0cff728187c4479266ae.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": "For those passports that have been issued in the past, the price is $1200 otherwise, the price is $1550."
   },
   {
     "id": 5,
-    "name": "China Visa",
-    "price": "1100",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Turkey Visa",
+    "headline": "Business 1 month/3 months",
+    "processTime": "20 - 25 Days",
+    "price": "$5,499",
+    "image": "https://i.pinimg.com/564x/ab/37/84/ab37845ab50561c6226722df5a6b1339.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": ""
   },
   {
     "id": 6,
-    "name": "Germany Visa",
-    "price": "$28000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Iran Visa",
+    "headline": "Business 6 months/1 year",
+    "processTime": "1 Week",
+    "price": "AF10,500/AF15,000",
+    "image": "https://i.pinimg.com/564x/80/3e/e1/803ee18dbc84a4ee63629efeb436ac7b.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo",
+      "Business License"
+    ],
+    "description": ""
   },
   {
     "id": 7,
-    "name": "Canada Visa",
-    "price": "$35000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Moscow Visa",
+    "headline": "Work 1 year",
+    "processTime": "25 Days",
+    "price": "$????",
+    "image": "https://i.pinimg.com/564x/ba/f5/63/baf5632599899341430b077d0469170f.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "The monthly salary of this job will be between $600 - $1000 depending on your work ethic.You will have to pay for your Iran Visa and Tickets separately."
   },
   {
     "id": 8,
-    "name": "US Visa",
-    "price": "$30000",
-    "processTime": "8-12 months",
-    "category": "visa",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/30/78/2c/rama-meadows.jpg?w=500&h=400&s=1"
+    "name": "Kazakhstan Visa",
+    "headline": "1 month",
+    "processTime": "30 Days",
+    "price": "$3,600",
+    "image": "https://i.pinimg.com/564x/b4/67/99/b46799d6ee12327019e6362b3bd21f59.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": ""
+  },
+  {
+    "id": 9,
+    "name": "Qatar Visa",
+    "headline": "3 months",
+    "processTime": "10 - 15 Days",
+    "price": "$500",
+    "image": "https://i.pinimg.com/564x/4d/51/f6/4d51f6e8ab90490fc18bdb38a2525004.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": ""
+  },
+  {
+    "id": 10,
+    "name": "Oman Visa",
+    "headline": "2 years",
+    "processTime": "10 - 15 Days",
+    "price": "$500",
+    "image": "https://i.pinimg.com/564x/50/ed/2c/50ed2c27cd90c7bd10b917e5482541a0.jpg",
+    "requiredDocs": [
+      "ID Card",
+      "Passport",
+      "Photo"
+    ],
+    "description": "With this package you will get a one month visa plus two year residency."
   }
 ]

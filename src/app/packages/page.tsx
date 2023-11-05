@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import "../globals.css";
 import Image from "next/image";
 import logo from "public/logo.png";
+import whatsapp from "public/whatsapp.png";
+import close from "public/cancel.png";
 import visa from "../data/visa.json";
 import ticket from "../data/ticket.json";
 import scholarship from "../data/scholarship.json";
@@ -17,6 +19,25 @@ export default function Packages() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryFromURL = searchParams.get("category");
+  const [selectedPackage, setSelectedPackage] = useState(null);
+
+  const openPopup = (index: any) => {
+    setSelectedPackage(index);
+    document.body.classList.add('no-scroll'); // Add the CSS class to disable scrolling
+  };
+  
+  const closePopup = () => {
+    setSelectedPackage(null);
+    document.body.classList.remove('no-scroll'); // Remove the CSS class to enable scrolling
+  };
+
+  const handlePopupClick = (e: React.MouseEvent) => {
+    const target = e.target as Element;
+    // Check if the click occurred outside the popup content
+    if (!target.closest('.popup-content')) {
+      closePopup();
+    }
+  };
 
   const setDataCategory = () => {
     switch (categoryFromURL) {
@@ -61,9 +82,8 @@ export default function Packages() {
     router.push(`/packages?${searchParams.toString()}`);
     const filteredData = allData.filter((item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
-      item.category.toLowerCase().includes(input.toLowerCase()) ||
-      item.price.toLowerCase().includes(input.toLowerCase())
-      // item.description.toLowerCase().includes(input.toLowerCase())
+      item.price.toLowerCase().includes(input.toLowerCase()) ||
+      item.description.toLowerCase().includes(input.toLowerCase())
     );
     setData(filteredData);
   };
@@ -209,27 +229,27 @@ export default function Packages() {
       <div className="container">
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
-            <div className={`${categoryFromURL === "all" || "" ? "active" : ""} category-tab__item`}>
+            <div className={`${categoryFromURL === "all" || "" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=all">
                 <span className="category-tab-text">All</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === "visa" ? "active" : ""} category-tab__item`}>
+            <div className={`${categoryFromURL === "visa" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=visa">
                 <span className="category-tab-text">Visa</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === "ticket" ? "active" : ""} category-tab__item`}>
+            <div className={`${categoryFromURL === "ticket" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=ticket">
                 <span className="category-tab-text">Ticket</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === "scholarship" ? "active" : ""} category-tab__item`}>
+            <div className={`${categoryFromURL === "scholarship" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=scholarship">
                 <span className="category-tab-text">Scholarship</span>
               </Link>
             </div>
-            <div className={`${categoryFromURL === "asylum" ? "active" : ""} category-tab__item`}>
+            <div className={`${categoryFromURL === "asylum" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=asylum">
                 <span className="category-tab-text">Asylum</span>
               </Link>
@@ -246,17 +266,17 @@ export default function Packages() {
               </div>
             )}
             {data.map((item, index) => (
-              <div className="package-card border-gray-600 border-b" key={index}>
-                <div className="package-card__content grid grid-cols-12 p-2 mx-2 my-4 rounded">
-                  <div className="package-card__image-container col-span-3 items-center flex">
-                    <Image className="rounded-lg" src={item.image} alt={item.name} width={74} height={74} />
+              <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
+                <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
+                  <div className="package-card-image-container col-span-3 py-1 pr-2">
+                    <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
                   </div>
                   <div className="col-span-8 flex flex-col items-start justify-start">
-                    <h3 className="package-card__title font-bold">{item.name}</h3>
+                    <h3 className="package-card-title font-bold">{item.name}</h3>
                     <p className="font-semibold text-gray-400">Process time: {item.processTime}</p>
-                    <p className="text-gray-400">medical 90 days</p>
+                    <p className="text-gray-400">{item.headline}</p>
                   </div>
-                  <div className="package-card__price col-span-1 font-bold flex justify-end font-price price">
+                  <div className="price col-span-1 font-bold flex justify-end">
                     {item.price}
                   </div>
                 </div>
@@ -265,6 +285,42 @@ export default function Packages() {
           </div>
         </div>
       </section>
+      {/* Package Details Popup */}
+      <div className={`popup ${selectedPackage !== null && "pop"}`} onClick={handlePopupClick}>
+        <div className={`popup-content ${selectedPackage !== null ? "pop" : ""}`}>
+          <div className="popup-close flex justify-end">
+            <button onClick={closePopup}>
+              <Image src={close} alt="close" width={20} height={20} />
+            </button>
+          </div>
+          {selectedPackage !== null && (
+            <>
+              <h2 className="text-2xl font-semibold text-center">
+                {data[selectedPackage].name}
+              </h2>
+              <Image className="my-4 rounded-lg popup-image" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={50} loading="lazy" />
+              <div className="popup-price my-2 font-bold flex justify-between font-price price">
+                <h3>
+                  Process Time: {data[selectedPackage].processTime}
+                </h3>
+                <p>
+                  Price: {data[selectedPackage].price}
+                </p>
+              </div>
+              <p className="popup-text">{data[selectedPackage].description}</p>
+              <h3 className="font-bold text-lg text-center my-2">Required Documents:</h3>
+              {data[selectedPackage].requiredDocs.map((item, index) => (
+                <div key={index} className="">
+                  <p className="ml-2">- {item}</p>
+                </div>
+              ))}
+            </>
+          )}
+          <div className="text-center pt-3 pb-1">
+            <button><Link className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center gap-1"  href="https://wa.me/93785105088" target='_blank'><Image src={whatsapp} alt="whatsapp" width={20} height={20} />Get This Package</Link></button>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
