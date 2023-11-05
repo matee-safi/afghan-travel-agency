@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import "../globals.css";
 import Image from "next/image";
 import logo from "public/logo.png";
+import whatsapp from "public/whatsapp.png";
 import close from "public/cancel.png";
 import visa from "../data/visa.json";
 import ticket from "../data/ticket.json";
@@ -309,17 +310,14 @@ export default function Packages() {
               <p className="popup-text">{data[selectedPackage].description}</p>
               <h3 className="font-bold text-lg text-center my-2">Required Documents:</h3>
               {data[selectedPackage].requiredDocs.map((item, index) => (
-                <div key={index} className="flex items-center">
-                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                    <p className="text-white font-bold">{index + 1}</p>
-                  </div>
-                  <p className="ml-2">{item}</p>
+                <div key={index} className="">
+                  <p className="ml-2">- {item}</p>
                 </div>
               ))}
             </>
           )}
-          <div className="text-center p-2">
-            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="">Get This Package</Link>
+          <div className="text-center pt-3 pb-1">
+            <button><Link className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center gap-1"  href="https://wa.me/93785105088" target='_blank'><Image src={whatsapp} alt="whatsapp" width={20} height={20} />Get This Package</Link></button>
           </div>
         </div>
       </div>
