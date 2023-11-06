@@ -13,16 +13,18 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
-interface Item {
-  id: string;
-  name: string;
-  category: string;
-  headline: string;
-  processTime: string;
-  price: string;
-  image: string;
-  requiredDocs: string;
-  description: string;
+if (typeof window !== 'undefined') {
+  interface Item {
+    id: string;
+    name: string;
+    category: string;
+    headline: string;
+    processTime: string;
+    price: string;
+    image: string;
+    requiredDocs: string;
+    description: string;
+  }
 }
 
 const Admin: React.FC = () => {
