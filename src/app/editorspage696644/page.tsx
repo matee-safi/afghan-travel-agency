@@ -13,18 +13,16 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
-if (typeof window !== 'undefined') {
-  interface Item {
-    id: string;
-    name: string;
-    category: string;
-    headline: string;
-    processTime: string;
-    price: string;
-    image: string;
-    requiredDocs: string;
-    description: string;
-  }
+interface Item {
+  id: string;
+  name: string;
+  category: string;
+  headline: string;
+  processTime: string;
+  price: string;
+  image: string;
+  requiredDocs: string;
+  description: string;
 }
 
 const Admin: React.FC = () => {
@@ -100,27 +98,29 @@ const Admin: React.FC = () => {
   };
 
   useEffect(() => {
-    const q = query(collection(db, 'items'));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const itemsArr: Item[] = [];
-      querySnapshot.forEach((doc) => {
-        const itemData = doc.data();
-        const newItem: Item = {
-          id: doc.id,
-          name: itemData.name,
-          category: itemData.category,
-          headline: itemData.headline,
-          processTime: itemData.processTime,
-          price: itemData.price,
-          image: itemData.image,
-          requiredDocs: itemData.requiredDocs,
-          description: itemData.description,
-        };
-        itemsArr.push(newItem);
-      });      
-      setItems(itemsArr);
-      return () => unsubscribe();
-    });
+    if (typeof window !== 'undefined') {
+      const q = query(collection(db, 'items'));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const itemsArr: Item[] = [];
+        querySnapshot.forEach((doc) => {
+          const itemData = doc.data();
+          const newItem: Item = {
+            id: doc.id,
+            name: itemData.name,
+            category: itemData.category,
+            headline: itemData.headline,
+            processTime: itemData.processTime,
+            price: itemData.price,
+            image: itemData.image,
+            requiredDocs: itemData.requiredDocs,
+            description: itemData.description,
+          };
+          itemsArr.push(newItem);
+        });      
+        setItems(itemsArr);
+        return () => unsubscribe();
+      });
+    }
   }, []);
 
   return (
