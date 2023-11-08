@@ -104,7 +104,7 @@ export default function Packages() {
 
   return (
     <main>
-      <nav className="nav sticky top-0 bg-primary">
+      <nav className="bg-primary sticky top-0 z-10">
         {showSearch ? (
           <div className="flex items-center w-full h-12 bg-[#212121] justify-start pl-3">
             <button
@@ -295,11 +295,11 @@ export default function Packages() {
           </div>
           {selectedPackage !== null && (
             <>
-              <h2 className="text-2xl font-semibold text-center">
+              <h2 className="text-2xl font-bold text-center text-orange-500">
                 {data[selectedPackage].name}
               </h2>
               <Image className="my-4 rounded-lg popup-image" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={50} loading="lazy" />
-              <div className="popup-price my-2 font-bold flex justify-between font-price price">
+              <div className="text-orange-700 popup-price my-2 font-bold flex justify-between">
                 <h3>
                   Process Time: {data[selectedPackage].processTime}
                 </h3>
@@ -310,8 +310,8 @@ export default function Packages() {
               <p className="popup-text">{data[selectedPackage].description}</p>
               <h3 className="font-bold text-lg text-center my-2">Required Documents:</h3>
               {data[selectedPackage].requiredDocs.map((item, index) => (
-                <div key={index} className="">
-                  <p className="ml-2">- {item}</p>
+                <div key={index} className="text-slate-700">
+                  <li className="ml-2 font-semibold">{item}</li>
                 </div>
               ))}
             </>

@@ -12,9 +12,9 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero">
-      <div className="container">
+      <div className="container md:flex md:justify-between">
         <div className="flex justify-center items-center flex-col mb-20">
-          <p className="text-3xl text-center mt-20 mx-10 font-light">
+          <p className="text-3xl text-center mt-20 mb-2 mx-10 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
           <p className="text-2xl font-semibold flex pl-9 m-2 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
