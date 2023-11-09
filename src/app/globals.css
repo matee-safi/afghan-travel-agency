@@ -24,8 +24,12 @@
   overflow: hidden;
 }
 
-.hero-bg {
-  /* background: url('https://t3.ftcdn.net/jpg/04/28/08/38/240_F_428083893_HZ7mGYJPaohTnU73H3FOAPVR4FlsqHby.jpg') no-repeat center center/cover; */
+.bg-hero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
 }
 
 input[type="search"]::-webkit-search-cancel-button {

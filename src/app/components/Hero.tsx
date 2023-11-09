@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import Image from "next/image";
+import hero from "public/hero.jpg";
+import heroMobile from "public/hero-mobile.jpg";
 
 const Hero: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
@@ -13,7 +16,7 @@ const Hero: React.FC = () => {
   return (
     <section id="hero">
       <div className="flex flex-col md:flex-row md:justify-center w-full">
-        <div className="flex justify-center w-full items-center md:pl-8 md:items-start lg:pl-24 xl:pl-32 flex-col mb-20">
+        <div className="flex z-10 justify-center w-full items-center md:pl-8 md:items-start lg:pl-24 xl:pl-32 flex-col mb-20">
           <p className="text-3xl leading-9 text-center md:text-left md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
@@ -65,8 +68,9 @@ const Hero: React.FC = () => {
             </div>
           </Link>
         </div>
-        <div className="h-96 w-full md:pr-8 lg:pr-24 xl:pr-32">
-          {/* Image should be placed here */}
+        <div className="w-full">
+          <Image className="hidden md:block" src={hero} alt="background" layout="fill" objectFit="cover" />
+          <Image className="md:hidden" src={heroMobile} alt="background" layout="fill" objectFit="cover" />
         </div>
       </div>
     </section>
