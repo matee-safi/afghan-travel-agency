@@ -17,8 +17,6 @@ export default function Home() {
       <About />
       <Contact />
       <Footer />
-      {/* create an animated cursor */}
-      {/* moving objects in the background */}
     </main>
   )
 }

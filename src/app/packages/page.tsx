@@ -162,7 +162,7 @@ export default function Packages() {
                 <div>
                   <div className="flex items-center h-12 justify-start pl-2">
                     <Link href="/">
-                      <Image className="w- h-full p-1" src={logo} width={50} height={50} alt="logo" />
+                      <Image className="w- h-full p-1.5" src={logo} width={50} height={50} alt="logo" />
                     </Link>
                     <form
                       className="w-full flex items-center"
@@ -180,7 +180,7 @@ export default function Packages() {
                         
                       }}
                       type="search"
-                      className="h-8 bg-neutral-800 text-white w-full px-3 ml-1 text-sm text-gray-700 rounded-full focus:outline-none focus:border-primary"
+                      className="h-8 bg-neutral-800 text-white w-full px-3 ml-1 text-sm rounded-full focus:outline-none focus:border-primary"
                       />
                     <button
                       className="invert p-3"
@@ -269,7 +269,7 @@ export default function Packages() {
               <div key={index} className="cursor-pointer md:px-10" onClick={() => openPopup(index)}>
                 <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
                   <div className="package-card-image-container col-span-3 py-1 pr-2">
-                    <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={150} height={50} loading="lazy" />
+                    <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
                   </div>
                   <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
                     <h3 className="package-card-title md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
