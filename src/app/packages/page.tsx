@@ -24,7 +24,7 @@ export default function Packages() {
   const openPopup = (index: any) => {
     setSelectedPackage(index);
   };
-  
+
   const closePopup = () => {
     setSelectedPackage(null);
   };
