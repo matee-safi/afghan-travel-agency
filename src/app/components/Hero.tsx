@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           </Link>
         </div>
         <div className="w-full">
-          <Image className="hidden md:block" src={hero} alt="background" layout="fill" objectFit="cover" />
+          <Image className="hidden md:block min-h-[600px]" src={hero} alt="background" layout="fill" objectFit="cover" />
           <Image className="md:hidden" src={heroMobile} alt="background" layout="fill" objectFit="cover" />
         </div>
       </div>

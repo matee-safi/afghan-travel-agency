@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <main>
-      <div className="h-screen">
+      <div className="h-screen min-h-[600px]">
         <Nav />
         <Hero />
       </div>
