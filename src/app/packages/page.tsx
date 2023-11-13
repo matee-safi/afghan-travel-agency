@@ -1,66 +1,61 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import "../globals.css";
 import Image from "next/image";
 import logo from "public/logo.png";
 import whatsapp from "public/whatsapp.png";
 import close from "public/cancel.png";
-import visa from "../data/visa.json";
-import ticket from "../data/ticket.json";
-import scholarship from "../data/scholarship.json";
-import asylum from "../data/asylum.json";
+import { db } from "../firebase";
+import { collection, getDocs, query, where } from "@firebase/firestore";
 
 export default function Packages() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
+  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const searchParams = useSearchParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const categoryFromURL = searchParams.get("category");
   const [selectedPackage, setSelectedPackage] = useState(null);
 
-  const openPopup = (index: any) => {
-    setSelectedPackage(index);
-    document.body.classList.add('no-scroll'); // Add the CSS class to disable scrolling
-  };
-  
-  const closePopup = () => {
-    setSelectedPackage(null);
-    document.body.classList.remove('no-scroll'); // Remove the CSS class to enable scrolling
+  const getData = async () => {
+    setIsLoading(true);
+    let items: Item[] = [];
+    // Fetch all data
+    const q = query(collection(db, "items"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      items.push({ id: doc.id, ...doc.data() });
+    });
+    setAllData(items);
+
+    if (categoryFromURL !== "all") {
+      const filteredData = items.filter(
+        (item) => item.category === categoryFromURL
+      );
+      setData(filteredData);
+      setIsLoading(false);
+      return;
+    }
+    setData(items);
+    setIsLoading(false);
   };
 
-  const handlePopupClick = (e: React.MouseEvent) => {
-    const target = e.target as Element;
-    // Check if the click occurred outside the popup content
-    if (!target.closest('.popup-content')) {
-      closePopup();
-    }
-  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   const setDataCategory = () => {
-    switch (categoryFromURL) {
-      case "all":
-        setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        break;
-      case "visa":
-        setData(visa);
-        break;
-      case "ticket":
-        setData(ticket);
-        break;
-      case "scholarship":
-        setData(scholarship);
-        break;
-      case "asylum":
-        setData(asylum);
-        break;
-      default:
-        setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        break;
+    if (categoryFromURL === "all") {
+      setData(allData);
+      return;
     }
-  }
+    const filteredData = allData.filter((item) => item.category === categoryFromURL);
+    setData(filteredData);
+  };
 
   useEffect(() => {
     const searchValue = searchParams.get("search");
@@ -73,16 +68,14 @@ export default function Packages() {
     }
   }, [categoryFromURL, searchParams, useSearchParams()]);
 
-  // Search function
   const performSearch = (input: string) => {
-    const allData = [...visa, ...ticket, ...scholarship, ...asylum];
-    setData(allData);
     const searchParams = new URLSearchParams();
     searchParams.set("search", input);
     router.push(`/packages?${searchParams.toString()}`);
     const filteredData = allData.filter((item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
-      item.price.toLowerCase().includes(input.toLowerCase()) ||
+      item.category.toLowerCase().includes(input.toLowerCase()) ||
+      item.headline.toLowerCase().includes(input.toLowerCase()) ||
       item.description.toLowerCase().includes(input.toLowerCase())
     );
     setData(filteredData);
@@ -99,6 +92,24 @@ export default function Packages() {
         performSearch(e.target.search.value);
         setShowSearch(!showSearch);
       }
+    }
+  };
+
+  const openPopup = (index: any) => {
+    setSelectedPackage(index);
+    document.body.classList.add('no-scroll'); // Add the CSS class to disable scrolling
+  };
+
+  const closePopup = () => {
+    setSelectedPackage(null);
+    document.body.classList.remove('no-scroll'); // Remove the CSS class to enable scrolling
+  };
+
+  const handlePopupClick = (e: React.MouseEvent) => {
+    const target = e.target as Element;
+    // Check if the click occurred outside the popup content
+    if (!target.closest('.popup-content')) {
+      closePopup();
     }
   };
 
@@ -260,28 +271,43 @@ export default function Packages() {
       <section id="packages">
         <div className="container">
           <div className="mt-10 p-2 overflow-none">
-            {data.length < 1 && (
-              <div className="flex h-40 items-center justify-center">
-                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
-              </div>
-            )}
-            {data.map((item, index) => (
-              <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
-                <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
-                  <div className="package-card-image-container col-span-3 py-1 pr-2">
-                    <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
-                  </div>
-                  <div className="col-span-8 flex flex-col items-start justify-start">
-                    <h3 className="package-card-title font-bold">{item.name}</h3>
-                    <p className="font-semibold text-gray-400">Process time: {item.processTime}</p>
-                    <p className="text-gray-400">{item.headline}</p>
-                  </div>
-                  <div className="price col-span-1 font-bold flex justify-end">
-                    {item.price}
-                  </div>
+            {isLoading ? (
+              <div className="flex h-screen justify-center items-center">
+                <div className="sk-chase mb-20">
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
                 </div>
               </div>
-            ))}
+            ) : (
+              <>
+                {data.length < 1 && (
+                  <div className="flex h-40 items-center justify-center">
+                    <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
+                  </div>
+                )}
+                {data.map((item, index) => (
+                  <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
+                    <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
+                      <div className="package-card-image-container col-span-3 py-1 pr-2">
+                        <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
+                      </div>
+                      <div className="col-span-8 flex flex-col items-start justify-start">
+                        <h3 className="package-card-title font-bold">{item.name}</h3>
+                        <p className="font-semibold text-gray-400">Process time: {item.processTime}</p>
+                        <p className="text-gray-400">{item.headline}</p>
+                      </div>
+                      <div className="price col-span-1 font-bold flex justify-end">
+                        {item.price}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
       </section>
