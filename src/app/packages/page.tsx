@@ -87,7 +87,7 @@ export default function Packages() {
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement> | React.FormEvent) => {
-    if (e.key === "Escape") {
+    if ((e as React.KeyboardEvent<HTMLInputElement>).key === "Escape") {
       setShowSearch(!showSearch);
     } else if (e.type === "submit") {
       e.preventDefault();
@@ -194,7 +194,7 @@ export default function Packages() {
                         
                       }}
                       type="search"
-                      className="h-8 bg-neutral-800 text-white w-full px-3 ml-1 text-sm text-gray-700 rounded-full focus:outline-none focus:border-primary"
+                      className="h-8 bg-neutral-800 text-white w-full px-3 ml-1 text-sm rounded-full focus:outline-none focus:border-primary"
                       />
                     <button
                       className="invert p-3"
