@@ -1,64 +1,66 @@
 "use client";
-import React, { useState, useEffect, use } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import "../globals.css";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
+import { db } from "../firebase";
+import { collection, getDocs, query } from "@firebase/firestore";
 import logo from "public/logo.png";
 import whatsapp from "public/whatsapp.png";
 import close from "public/cancel.png";
-import visa from "../data/visa.json";
-import ticket from "../data/ticket.json";
-import scholarship from "../data/scholarship.json";
-import asylum from "../data/asylum.json";
+import "../globals.css";
+
+interface Item {
+  id: string;
+  name: string;
+  category: string;
+  headline: string;
+  description: string;
+  processTime: string;
+  price: string;
+  image: string;
+  requiredDocs: string[];
+}
 
 export default function Packages() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState([...visa, ...ticket, ...scholarship, ...asylum]);
+  const [data, setData] = useState<Item[]>([]);
+  const [allData, setAllData] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const searchParams = useSearchParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const categoryFromURL = searchParams.get("category");
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
 
-  const openPopup = (index: any) => {
-    setSelectedPackage(index);
+  const getData = async () => {
+    setIsLoading(true);
+    let items: Item[] = [];
+    // Fetch all data
+    const q = query(collection(db, "items"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      items.push({ id: doc.id, ...doc.data() } as Item);
+    });
+    setAllData(items);
+    setData(items);
+    setIsLoading(false);
   };
 
-  const closePopup = () => {
-    setSelectedPackage(null);
-  };
-
-  const handlePopupClick = (e: React.MouseEvent) => {
-    const target = e.target as Element;
-    // Check if the click occurred outside the popup content
-    if (!target.closest('.popup-content')) {
-      closePopup();
-    }
-  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   const setDataCategory = () => {
-    switch (categoryFromURL) {
-      case "all":
-        setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        break;
-      case "visa":
-        setData(visa);
-        break;
-      case "ticket":
-        setData(ticket);
-        break;
-      case "scholarship":
-        setData(scholarship);
-        break;
-      case "asylum":
-        setData(asylum);
-        break;
-      default:
-        setData([...visa, ...ticket, ...scholarship, ...asylum]);
-        break;
+    if (categoryFromURL === "all") {
+      setData(allData);
+    } else {
+      const filteredData = allData.filter(
+        (item) => item.category === categoryFromURL
+      );
+      setData(filteredData);
     }
-  }
+  };
 
   useEffect(() => {
     const searchValue = searchParams.get("search");
@@ -69,34 +71,51 @@ export default function Packages() {
       setDataCategory();
       setSearchTerm("");
     }
-  }, [categoryFromURL, searchParams, useSearchParams()]);
+  }, [categoryFromURL, searchParams, allData]);
 
-  // Search function
   const performSearch = (input: string) => {
-    const allData = [...visa, ...ticket, ...scholarship, ...asylum];
-    setData(allData);
     const searchParams = new URLSearchParams();
     searchParams.set("search", input);
     router.push(`/packages?${searchParams.toString()}`);
     const filteredData = allData.filter((item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
-      item.price.toLowerCase().includes(input.toLowerCase()) ||
+      item.category.toLowerCase().includes(input.toLowerCase()) ||
+      item.headline.toLowerCase().includes(input.toLowerCase()) ||
       item.description.toLowerCase().includes(input.toLowerCase())
     );
     setData(filteredData);
   };
 
-  const handleSearch = (e: any) => {
-    if (e.key === "Escape") {
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement> | React.FormEvent) => {
+    if ((e as React.KeyboardEvent<HTMLInputElement>).key === "Escape") {
       setShowSearch(!showSearch);
-    }
-    else if (e.type === "submit") {
+    } else if (e.type === "submit") {
       e.preventDefault();
-      if (e.target.search.value) {
-        setSearchTerm(e.target.search.value);
-        performSearch(e.target.search.value);
+      const formElement = e.currentTarget as HTMLFormElement;
+      const searchInput = formElement.querySelector<HTMLInputElement>('#search');
+  
+      if (searchInput && searchInput.value) {
+        setSearchTerm(searchInput.value);
+        performSearch(searchInput.value);
         setShowSearch(!showSearch);
       }
+    }
+  };
+
+  const openPopup = (index: number) => {
+    setSelectedPackage(index);
+    document.body.classList.add('no-scroll');
+  };
+
+  const closePopup = () => {
+    setSelectedPackage(null);
+    document.body.classList.remove('no-scroll');
+  };
+
+  const handlePopupClick = (e: React.MouseEvent) => {
+    const target = e.target as Element;
+    if (!target.closest('.popup-content')) {
+      closePopup();
     }
   };
 
@@ -257,29 +276,44 @@ export default function Packages() {
       </div>
       <section id="packages">
         <div className="container mx-auto">
-          <div className="mt-10 p-2 overflow-none mb-5 lg:mb-10">
-            {data.length < 1 && (
-              <div className="flex h-40 items-center justify-center">
-                <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
-              </div>
-            )}
-            {data.map((item, index) => (
-              <div key={index} className="cursor-pointer md:px-10" onClick={() => openPopup(index)}>
-                <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
-                  <div className="package-card-image-container col-span-3 py-1 pr-2">
-                    <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
-                  </div>
-                  <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
-                    <h3 className="package-card-title md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
-                    <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">Process time: {item.processTime}</p>
-                    <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
-                  </div>
-                  <div className="price md:text-xl lg:text-2xl md:pt-2 font-mono col-span-1 font-bold flex justify-end">
-                    {item.price}
-                  </div>
+          <div className="mt-10 p-2 overflow-none">
+            {isLoading ? (
+              <div className="flex h-screen justify-center items-center">
+                <div className="sk-chase mb-20">
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
+                  <div className="sk-chase-dot"></div>
                 </div>
               </div>
-            ))}
+            ) : (
+              <>
+                {data.length < 1 && (
+                  <div className="flex h-40 items-center justify-center">
+                    <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
+                  </div>
+                )}
+                {data.map((item, index) => (
+                  <div key={index} className="cursor-pointer md:px-10" onClick={() => openPopup(index)}>
+                    <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
+                      <div className="package-card-image-container col-span-3 py-1 pr-2">
+                        <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
+                      </div>
+                      <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
+                        <h3 className="package-card-title md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
+                        <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">Process time: {item.processTime}</p>
+                        <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
+                      </div>
+                      <div className="price md:text-xl lg:text-2xl md:pt-2 font-mono font-bold flex justify-end">
+                        {item.price}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
       </section>
