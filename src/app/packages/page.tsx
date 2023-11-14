@@ -8,7 +8,7 @@ import logo from "public/logo.png";
 import whatsapp from "public/whatsapp.png";
 import close from "public/cancel.png";
 import { db } from "../firebase";
-import { collection, getDocs, query, where } from "@firebase/firestore";
+import { collection, getDocs, query } from "@firebase/firestore";
 
 export default function Packages() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,15 +31,6 @@ export default function Packages() {
       items.push({ id: doc.id, ...doc.data() });
     });
     setAllData(items);
-
-    if (categoryFromURL !== "all") {
-      const filteredData = items.filter(
-        (item) => item.category === categoryFromURL
-      );
-      setData(filteredData);
-      setIsLoading(false);
-      return;
-    }
     setData(items);
     setIsLoading(false);
   };
@@ -51,10 +42,12 @@ export default function Packages() {
   const setDataCategory = () => {
     if (categoryFromURL === "all") {
       setData(allData);
-      return;
+    } else {
+      const filteredData = allData.filter(
+        (item) => item.category === categoryFromURL
+      );
+      setData(filteredData);
     }
-    const filteredData = allData.filter((item) => item.category === categoryFromURL);
-    setData(filteredData);
   };
 
   useEffect(() => {
@@ -66,7 +59,7 @@ export default function Packages() {
       setDataCategory();
       setSearchTerm("");
     }
-  }, [categoryFromURL, searchParams, useSearchParams()]);
+  }, [categoryFromURL, searchParams, allData]);
 
   const performSearch = (input: string) => {
     const searchParams = new URLSearchParams();
@@ -84,8 +77,7 @@ export default function Packages() {
   const handleSearch = (e: any) => {
     if (e.key === "Escape") {
       setShowSearch(!showSearch);
-    }
-    else if (e.type === "submit") {
+    } else if (e.type === "submit") {
       e.preventDefault();
       if (e.target.search.value) {
         setSearchTerm(e.target.search.value);
