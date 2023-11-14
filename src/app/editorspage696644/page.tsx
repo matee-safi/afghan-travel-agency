@@ -11,10 +11,8 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { getAnalytics } from 'firebase/analytics';
 import { db } from '../firebase';
 
-// Define the Item interface
 interface Item {
   id: string;
   name: string;
@@ -27,9 +25,7 @@ interface Item {
   description: string;
 }
 
-// Define the Admin component
 const Admin: React.FC = () => {
-  // State variables
   const [error, setError] = useState<string>('');
   const [items, setItems] = useState<Item[]>([]);
   const [item, setItem] = useState<Item>({
@@ -44,10 +40,8 @@ const Admin: React.FC = () => {
     description: '',
   });
 
-  // Function to add an item
   const addItem = async (e: MouseEvent) => {
     e.preventDefault();
-    // Check if required fields are filled
     if (
       !item.name ||
       !item.category ||
@@ -59,9 +53,7 @@ const Admin: React.FC = () => {
     ) {
       setError('Please fill all the fields');
     } else {
-      // Split requiredDocs into an array
       const requiredDocsArray = item.requiredDocs.split(',');
-      // Add item to the database
       const docRef = await addDoc(collection(db, 'items'), {
         name: item.name,
         category: item.category,
@@ -73,7 +65,6 @@ const Admin: React.FC = () => {
         description: item.description,
       });
       console.log('Document written with ID: ', docRef.id);
-      // Reset the item state
       setItem({
         id: '',
         name: '',
@@ -88,17 +79,14 @@ const Admin: React.FC = () => {
     }
   };
 
-  // Function to delete an item
   const deleteItem = async (id: string) => {
     await deleteDoc(doc(db, 'items', id));
   };
 
-  // Function to get item details
   const getItem = (item: Item) => {
     setItem(item);
-  };
+  }
 
-  // Function to update an item
   const updateItem = async (id: string) => {
     const docRef = doc(db, 'items', id);
     await updateDoc(docRef, {
@@ -113,19 +101,10 @@ const Admin: React.FC = () => {
     });
   };
 
-  // useEffect to fetch items from the database
   useEffect(() => {
-    // Check if window is defined (client-side) before initializing analytics
     if (typeof window !== 'undefined') {
-      try {
-        const analytics = getAnalytics();
-        // Rest of your analytics configuration
-      } catch (error) {
-        console.error('Error initializing analytics:', error);
-      }
+      const hash = global.window && window.location.hash;
     }
-
-    // Fetch items from the database
     const q = query(collection(db, 'items'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const itemsArr: Item[] = [];
@@ -143,12 +122,10 @@ const Admin: React.FC = () => {
           description: itemData.description,
         };
         itemsArr.push(newItem);
-      });
+      });      
       setItems(itemsArr);
+      return () => unsubscribe();
     });
-
-    // Cleanup function to unsubscribe from onSnapshot
-    return () => unsubscribe();
   }, []);
 
   return (
