@@ -1,25 +1,37 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import "../globals.css";
-import Image from "next/image";
+import { db } from "../firebase";
+import { collection, getDocs, query } from "@firebase/firestore";
 import logo from "public/logo.png";
 import whatsapp from "public/whatsapp.png";
 import close from "public/cancel.png";
-import { db } from "../firebase";
-import { collection, getDocs, query } from "@firebase/firestore";
+import "../globals.css";
+
+interface Item {
+  id: string;
+  name: string;
+  category: string;
+  headline: string;
+  description: string;
+  processTime: string;
+  price: string;
+  image: string;
+  requiredDocs: string[];
+}
 
 export default function Packages() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [data, setData] = useState([]);
-  const [allData, setAllData] = useState([]);
+  const [data, setData] = useState<Item[]>([]);
+  const [allData, setAllData] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const categoryFromURL = searchParams.get("category");
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
 
   const getData = async () => {
     setIsLoading(true);
@@ -28,7 +40,7 @@ export default function Packages() {
     const q = query(collection(db, "items"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      items.push({ id: doc.id, ...doc.data() });
+      items.push({ id: doc.id, ...doc.data() } as Item);
     });
     setAllData(items);
     setData(items);
@@ -74,32 +86,31 @@ export default function Packages() {
     setData(filteredData);
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement> | React.FormEvent) => {
     if (e.key === "Escape") {
       setShowSearch(!showSearch);
     } else if (e.type === "submit") {
       e.preventDefault();
-      if (e.target.search.value) {
-        setSearchTerm(e.target.search.value);
-        performSearch(e.target.search.value);
+      if ((e as React.FormEvent).currentTarget.search.value) {
+        setSearchTerm((e as React.FormEvent).currentTarget.search.value);
+        performSearch((e as React.FormEvent).currentTarget.search.value);
         setShowSearch(!showSearch);
       }
     }
   };
 
-  const openPopup = (index: any) => {
+  const openPopup = (index: number) => {
     setSelectedPackage(index);
-    document.body.classList.add('no-scroll'); // Add the CSS class to disable scrolling
+    document.body.classList.add('no-scroll');
   };
 
   const closePopup = () => {
     setSelectedPackage(null);
-    document.body.classList.remove('no-scroll'); // Remove the CSS class to enable scrolling
+    document.body.classList.remove('no-scroll');
   };
 
   const handlePopupClick = (e: React.MouseEvent) => {
     const target = e.target as Element;
-    // Check if the click occurred outside the popup content
     if (!target.closest('.popup-content')) {
       closePopup();
     }
