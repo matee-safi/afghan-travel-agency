@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" version="1.1">
+  <!-- Transparent background -->
+  <rect width="100%" height="100%" fill="none" />
+
+  <!-- Orange globe (circle) -->
+  <circle cx="100" cy="100" r="80" fill="orange" />
+
+  <!-- Travel site icons -->
+  <!-- Icon 1: Airplane -->
+  <path
+    d="M110 110 Q120 105, 130 110 L130 115 Q120 120, 110 115 Z"
+    fill="white"
+  />
+
+  <!-- Icon 2: Suitcase -->
+  <rect x="90" y="135" width="40" height="10" fill="white" />
+  <rect x="95" y="145" width="30" height="10" fill="white" />
+  <rect x="100" y="155" width="20" height="10" fill="white" />
+
+  <!-- Icon 3: Hotel -->
+  <rect x="120" y="80" width="10" height="40" fill="white" />
+  <rect x="110" y="90" width="30" height="20" fill="white" />
+
+  <!-- Icon 4: Cruise Ship -->
+  <path
+    d="M160 120 Q160 105, 150 100 Q140 95, 130 100 L120 115 L160 125 Z"
+    fill="white"
+  />
+</svg>

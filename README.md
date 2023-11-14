@@ -37,3 +37,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 <a href="https://www.flaticon.com/free-icons/refugee" title="refugee icons">Refugee icons created by Darius Dan - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/immigration" title="immigration icons">Immigration icons created by Eucalyp - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/whatsapp" title="whatsapp icons">Whatsapp icons created by Fathema Khanom - Flaticon</a>

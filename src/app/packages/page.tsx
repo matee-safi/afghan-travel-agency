@@ -121,7 +121,7 @@ export default function Packages() {
 
   return (
     <main>
-      <nav className="nav sticky top-0 bg-primary">
+      <nav className="bg-primary sticky top-0 z-10">
         {showSearch ? (
           <div className="flex items-center w-full h-12 bg-[#212121] justify-start pl-3">
             <button
@@ -179,7 +179,7 @@ export default function Packages() {
                 <div>
                   <div className="flex items-center h-12 justify-start pl-2">
                     <Link href="/">
-                      <Image className="w- h-full p-1" src={logo} width={50} height={50} alt="logo" />
+                      <Image className="w- h-full p-1.5" src={logo} width={50} height={50} alt="logo" />
                     </Link>
                     <form
                       className="w-full flex items-center"
@@ -243,7 +243,7 @@ export default function Packages() {
           </div>
         )}
       </nav>
-      <div className="container">
+      <div className="container mx-auto">
         <div className="category-tab-container">
           <div className="category-tab gap-1 no-scrollbar">
             <div className={`${categoryFromURL === "all" || "" ? "active" : ""} category-tab-item`}>
@@ -275,7 +275,7 @@ export default function Packages() {
         </div>
       </div>
       <section id="packages">
-        <div className="container">
+        <div className="container mx-auto">
           <div className="mt-10 p-2 overflow-none">
             {isLoading ? (
               <div className="flex h-screen justify-center items-center">
@@ -295,21 +295,19 @@ export default function Packages() {
                     <h1 className="text-xl text-gray-500 font-bold text-center p-6">Package Not Found</h1>
                   </div>
                 )}
-                {data.map((item, index) => (
-                  <div key={index} className="cursor-pointer" onClick={() => openPopup(index)}>
-                    <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
-                      <div className="package-card-image-container col-span-3 py-1 pr-2">
-                        <Image className="rounded-lg" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
-                      </div>
-                      <div className="col-span-8 flex flex-col items-start justify-start">
-                        <h3 className="package-card-title font-bold">{item.name}</h3>
-                        <p className="font-semibold text-gray-400">Process time: {item.processTime}</p>
-                        <p className="text-gray-400">{item.headline}</p>
-                      </div>
-                      <div className="price col-span-1 font-bold flex justify-end">
-                        {item.price}
-                      </div>
-                    </div>
+            {data.map((item, index) => (
+              <div key={index} className="cursor-pointer md:px-10" onClick={() => openPopup(index)}>
+                <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
+                  <div className="package-card-image-container col-span-3 py-1 pr-2">
+                    <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
+                  </div>
+                  <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
+                    <h3 className="package-card-title md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
+                    <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">Process time: {item.processTime}</p>
+                    <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
+                  </div>
+                  <div className="price md:text-xl lg:text-2xl md:pt-2 font-mono col-span-1 font-bold flex justify-end">
+                    {item.price}
                   </div>
                 ))}
               </>
@@ -319,38 +317,45 @@ export default function Packages() {
       </section>
       {/* Package Details Popup */}
       <div className={`popup ${selectedPackage !== null && "pop"}`} onClick={handlePopupClick}>
-        <div className={`popup-content ${selectedPackage !== null ? "pop" : ""}`}>
+        <div className={`popup-content max-w-sm md:max-w-lg lg:max-w-xl ${selectedPackage !== null ? "pop" : ""}`}>
           <div className="popup-close flex justify-end">
             <button onClick={closePopup}>
               <Image src={close} alt="close" width={20} height={20} />
             </button>
           </div>
           {selectedPackage !== null && (
-            <>
-              <h2 className="text-2xl font-semibold text-center">
-                {data[selectedPackage].name}
-              </h2>
-              <Image className="my-4 rounded-lg popup-image" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={50} loading="lazy" />
-              <div className="popup-price my-2 font-bold flex justify-between font-price price">
-                <h3>
-                  Process Time: {data[selectedPackage].processTime}
-                </h3>
-                <p>
-                  Price: {data[selectedPackage].price}
-                </p>
-              </div>
-              <p className="popup-text">{data[selectedPackage].description}</p>
-              <h3 className="font-bold text-lg text-center my-2">Required Documents:</h3>
-              {data[selectedPackage].requiredDocs.map((item, index) => (
-                <div key={index} className="">
-                  <p className="ml-2">- {item}</p>
+            <div>
+              <Image className="mb-4 md:m-0 popup-image rounded-t-lg w-full" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={200} height={200} loading="lazy" />
+              <div className="px-5 md:px-7">
+                <h2 className="text-2xl md:text-3xl md:my-3 font-bold text-center text-orange-500">
+                  {data[selectedPackage].name}
+                </h2>
+                <div className="popup-price md:text-lg my-2 font-bold flex justify-between">
+                  <h3>
+                    Process Time: {data[selectedPackage].processTime}
+                  </h3>
+                  <p>
+                    Price: {data[selectedPackage].price}
+                  </p>
                 </div>
-              ))}
-            </>
+                <p className="md:text-lg">{data[selectedPackage].description}</p>
+                <h3 className="font-bold text-lg md:text-xl text-center my-2">Requirements:</h3>
+                {data[selectedPackage].requiredDocs.map((item, index) => (
+                  <div key={index} className="text-slate-700">
+                    <li className="ml-2 font-semibold md:text-lg">{item}</li>
+                  </div>
+                ))}
+                <div className="text-center py-4">
+                  <button className="md:text-lg">
+                    <Link className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center gap-1"  href="https://wa.me/93785105088" target='_blank'>
+                      <Image src={whatsapp} alt="whatsapp" width={20} height={20} />
+                      Get This Package
+                    </Link>
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
-          <div className="text-center pt-3 pb-1">
-            <button><Link className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center gap-1"  href="https://wa.me/93785105088" target='_blank'><Image src={whatsapp} alt="whatsapp" width={20} height={20} />Get This Package</Link></button>
-          </div>
         </div>
       </div>
     </main>

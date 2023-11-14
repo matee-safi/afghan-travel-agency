@@ -11,7 +11,7 @@
       "Passport",
       "Photo"
     ],
-    "description": ""
+    "description": "Tourism Visa for 6 months."
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@
       "Passport",
       "Photo"
     ],
-    "description": "This is a Medical Visa for 3 months with Multiple Entries."
+    "description": "Medical Visa for 3 months with Multiple Entries."
   },
   {
     "id": 3,
@@ -54,7 +54,7 @@
       "Photo",
       "Business License"
     ],
-    "description": "For those passports that have been issued in the past, the price is $1200 otherwise, the price is $1550."
+    "description": "For those passports that have been issued a chinese visa in the past, the price is $1200 otherwise, the price is $1550."
   },
   {
     "id": 5,
@@ -69,14 +69,14 @@
       "Photo",
       "Business License"
     ],
-    "description": ""
+    "description": "Business Visa for 1 or 3 months."
   },
   {
     "id": 6,
     "name": "Iran Visa",
-    "headline": "Business 6 months/1 year",
+    "headline": "Business 1 year",
     "processTime": "1 Week",
-    "price": "AF10,500/AF15,000",
+    "price": "AF15,000",
     "image": "https://i.pinimg.com/564x/80/3e/e1/803ee18dbc84a4ee63629efeb436ac7b.jpg",
     "requiredDocs": [
       "ID Card",
@@ -84,21 +84,22 @@
       "Photo",
       "Business License"
     ],
-    "description": ""
+    "description": "Business Visa for 1 year."
   },
   {
     "id": 7,
-    "name": "Moscow Visa",
-    "headline": "Work 1 year",
-    "processTime": "25 Days",
-    "price": "$????",
-    "image": "https://i.pinimg.com/564x/ba/f5/63/baf5632599899341430b077d0469170f.jpg",
+    "name": "Iran Visa",
+    "headline": "Business 6 months",
+    "processTime": "1 Week",
+    "price": "AF10,500",
+    "image": "https://i.pinimg.com/564x/80/3e/e1/803ee18dbc84a4ee63629efeb436ac7b.jpg",
     "requiredDocs": [
       "ID Card",
       "Passport",
-      "Photo"
+      "Photo",
+      "Business License"
     ],
-    "description": "The monthly salary of this job will be between $600 - $1000 depending on your work ethic.You will have to pay for your Iran Visa and Tickets separately."
+    "description": "Business Visa for 6 months."
   },
   {
     "id": 8,
@@ -112,12 +113,12 @@
       "Passport",
       "Photo"
     ],
-    "description": ""
+    "description": "Visa for 1 month."
   },
   {
     "id": 9,
     "name": "Qatar Visa",
-    "headline": "3 months",
+    "headline": "Tourism 3 months",
     "processTime": "10 - 15 Days",
     "price": "$500",
     "image": "https://i.pinimg.com/564x/4d/51/f6/4d51f6e8ab90490fc18bdb38a2525004.jpg",
@@ -126,14 +127,14 @@
       "Passport",
       "Photo"
     ],
-    "description": ""
+    "description": "Tourism Visa for 3 months."
   },
   {
     "id": 10,
     "name": "Oman Visa",
     "headline": "2 years",
     "processTime": "10 - 15 Days",
-    "price": "$500",
+    "price": "$2800",
     "image": "https://i.pinimg.com/564x/50/ed/2c/50ed2c27cd90c7bd10b917e5482541a0.jpg",
     "requiredDocs": [
       "ID Card",

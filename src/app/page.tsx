@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <main>
-      <div className="h-screen hero-bg">
+      <div className="h-screen min-h-[600px]">
         <Nav />
         <Hero />
       </div>
@@ -17,8 +17,6 @@ export default function Home() {
       <About />
       <Contact />
       <Footer />
-      {/* create an animated cursor */}
-      {/* moving objects in the background */}
     </main>
   )
 }
