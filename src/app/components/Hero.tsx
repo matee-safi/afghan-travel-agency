@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import Image from "next/image";
+import hero from "public/hero.jpg";
+import heroMobile from "public/hero-mobile.jpg";
 
 const Hero: React.FC = () => {
   const [isClient, setIsClient] = useState(false);
@@ -12,12 +15,12 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero">
-      <div className="container">
-        <div className="flex justify-center items-center flex-col mb-20">
-          <p className="text-3xl text-center mt-20 mx-10 font-light">
+      <div className="flex flex-col md:flex-row md:justify-center w-full">
+        <div className="flex z-10 justify-center w-full items-center md:pl-8 md:items-start lg:pl-24 xl:pl-32 flex-col mb-20">
+          <p className="text-3xl leading-9 text-center md:text-left md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
-          <p className="text-2xl font-semibold flex pl-9 m-2 text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+          <p className="text-2xl lg:text-3xl md:font-bold font-semibold flex pl-9 md:pl-0 m-2 md:mx-0 text-center md:text-left mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
             Our Services are&nbsp;<span>{""}</span>
             {isClient && (
               <Typewriter
@@ -31,7 +34,7 @@ const Hero: React.FC = () => {
           </p>
           <Link href="packages?category=all">
             <div className="wrapper">
-              <a className="cta" href="#">
+              <a className="cta lg:text-3xl md:mb-20 lg:mb-32" href="#">
                 <span className="">See Packages</span>
                 <span>
                   <svg
@@ -64,6 +67,10 @@ const Hero: React.FC = () => {
               </a>
             </div>
           </Link>
+        </div>
+        <div className="w-full">
+          <Image className="hidden md:block min-h-[600px]" src={hero} alt="background" layout="fill" objectFit="cover" />
+          <Image className="md:hidden" src={heroMobile} alt="background" layout="fill" objectFit="cover" />
         </div>
       </div>
     </section>

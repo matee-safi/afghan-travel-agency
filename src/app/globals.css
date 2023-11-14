@@ -24,8 +24,12 @@
   overflow: hidden;
 }
 
-.hero-bg {
-  /* background: url('https://t3.ftcdn.net/jpg/04/28/08/38/240_F_428083893_HZ7mGYJPaohTnU73H3FOAPVR4FlsqHby.jpg') no-repeat center center/cover; */
+.bg-hero {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -113,14 +117,39 @@ body {
   font-family: "Bebas Neue", Roboto, sans-serif;
 }
 
-.btn-primary {
-  background: linear-gradient(90deg, #D75274, #ff2d62);
-  border-radius: 50px;
-  padding: 10px 30px;
-  color: #fff;
+.btn-hover {
+  width: 200px;
+  font-size: 16px;
   font-weight: 600;
-  font-size: 1.2rem;
-  transition: all 0.3s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.btn-hover.btn-color {
+  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
 
 .wrapper {
@@ -137,7 +166,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     color: white;
-    background: linear-gradient(90deg, #8b1734, #b14862);
+    background: linear-gradient(90deg, #b14862, orange);
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
@@ -149,7 +178,7 @@ body {
 
 .cta:hover {
     transition: 0.5s;
-    box-shadow: 10px 10px 0 #FBC638;
+    box-shadow: 10px 10px 0 white;
 }
 
 .cta span:nth-child(2) {
@@ -222,10 +251,6 @@ path.two {
   opacity: 1;
 }
 
-.nav {
-  z-index: 3;
-}
-
 .category-tab {
   position: fixed;
   top: 48px;
@@ -294,7 +319,6 @@ path.two {
 }
 
 .package-card-image-container img {
-  height: 74px;
   width: 100%;
   object-fit: cover;
 }
@@ -304,7 +328,7 @@ path.two {
   position: fixed;
   opacity: 0;
   transform: scale(0);
-  padding: 0 5%;
+  padding: 0 2.5%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -322,12 +346,10 @@ path.two {
   transition: all 0.2s ease-in-out;
   transform: scale(0);
   opacity: 0;
-  width: 100%;
-  max-width: 800px;
+  width: 95%;
   background: whitesmoke;
   color: black;
   border-radius: 10px;
-  padding: 20px;
   justify-content: center;
   align-items: center;
   margin: 50px 0;
@@ -338,7 +360,6 @@ path.two {
   height: 200px;
   object-fit: cover;
   object-position: center;
-  border-radius: 10px;
 }
 
 .pop {
