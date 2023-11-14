@@ -104,12 +104,10 @@ export default function Packages() {
 
   const openPopup = (index: number) => {
     setSelectedPackage(index);
-    document.body.classList.add('no-scroll');
   };
 
   const closePopup = () => {
     setSelectedPackage(null);
-    document.body.classList.remove('no-scroll');
   };
 
   const handlePopupClick = (e: React.MouseEvent) => {
@@ -327,7 +325,7 @@ export default function Packages() {
           </div>
           {selectedPackage !== null && (
             <div>
-              <Image className="mb-4 md:m-0 popup-image rounded-t-lg w-full" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={200} height={200} loading="lazy" />
+              <Image className="mb-4 md:m-0 popup-image rounded-t-lg w-full" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={500} loading="lazy" />
               <div className="px-5 md:px-7">
                 <h2 className="text-2xl md:text-3xl md:my-3 font-bold text-center text-orange-500">
                   {data[selectedPackage].name}
