@@ -83,6 +83,10 @@ const Admin: React.FC = () => {
     await deleteDoc(doc(db, 'items', id));
   };
 
+  const getItem = (item: Item) => {
+    setItem(item);
+  }
+
   const updateItem = async (id: string) => {
     const docRef = doc(db, 'items', id);
     await updateDoc(docRef, {
@@ -214,31 +218,39 @@ const Admin: React.FC = () => {
             <th>Description</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="border-white border-2">
           {items.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.category}</td>
-              <td>{item.headline}</td>
-              <td>{item.processTime}</td>
-              <td>{item.price}</td>
-              <td>
+            <tr key={item.id} className="border-white border-2">
+              <td className="border-white border-2">{item.name}</td>
+              <td className="border-white border-2">{item.category}</td>
+              <td className="border-white border-2">{item.headline}</td>
+              <td className="border-white border-2">{item.processTime}</td>
+              <td className="border-white border-2">{item.price}</td>
+              <td className="border-white border-2">
                 <Image src={item.image} alt={item.name} width={50} height={50} />
               </td>
-              <td>{item.requiredDocs}</td>
-              <td>{item.description}</td>
-              <button
-                onClick={() => deleteItem(item.id)}
-                className="ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900"
-              >
-                Delete
-              </button>
-              <button
-                onClick={() => updateItem(item.id)}
-                className="ml-8 p-4 border-l-2 border-slate-900 hover:bg-slate-900"
-              >
-                Update
-              </button>
+              <td className="border-white border-2">{item.requiredDocs}</td>
+              <td className="border-white border-2">{item.description}</td>
+              <div className="flex flex-col justify-center items-center p-2 ">
+                <button
+                  onClick={() => deleteItem(item.id)}
+                  className="py-2 px-3 mx-auto bg-red-600 rounded-lg hover:bg-red-900 mb-2"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => getItem(item)}
+                  className="py-2 px-3 mx-auto bg-green-600 rounded-lg hover:bg-green-900 mb-2"
+                >
+                  Get
+                </button>
+                <button
+                  onClick={() => updateItem(item.id)}
+                  className="py-2 px-3 mx-auto bg-blue-600 rounded-lg hover:bg-blue-900"
+                >
+                  Update
+                </button>
+              </div>
             </tr>
           ))}
         </tbody>
