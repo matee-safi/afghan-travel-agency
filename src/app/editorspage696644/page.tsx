@@ -104,30 +104,27 @@ const Admin: React.FC = () => {
   };
 
   useEffect(() => {
-    if (router && typeof window !== 'undefined') {
-      const hash = global.window && window.location.hash;
-        const q = query(collection(db, 'items'));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        const itemsArr: Item[] = [];
-        querySnapshot.forEach((doc) => {
-          const itemData = doc.data();
-          const newItem: Item = {
-            id: doc.id,
-            name: itemData.name,
-            category: itemData.category,
-            headline: itemData.headline,
-            processTime: itemData.processTime,
-            price: itemData.price,
-            image: itemData.image,
-            requiredDocs: itemData.requiredDocs,
-            description: itemData.description,
-          };
-          itemsArr.push(newItem);
-        });      
-        setItems(itemsArr);
-        return () => unsubscribe();
-      });
-    }
+      const q = query(collection(db, 'items'));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const itemsArr: Item[] = [];
+      querySnapshot.forEach((doc) => {
+        const itemData = doc.data();
+        const newItem: Item = {
+          id: doc.id,
+          name: itemData.name,
+          category: itemData.category,
+          headline: itemData.headline,
+          processTime: itemData.processTime,
+          price: itemData.price,
+          image: itemData.image,
+          requiredDocs: itemData.requiredDocs,
+          description: itemData.description,
+        };
+        itemsArr.push(newItem);
+      });      
+      setItems(itemsArr);
+      return () => unsubscribe();
+    });
   }, []);
 
   return (
