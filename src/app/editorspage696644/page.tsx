@@ -104,8 +104,8 @@ const Admin: React.FC = () => {
   };
 
   useEffect(() => {
-      const q = query(collection(db, 'items'));
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const q = query(collection(db, 'items'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const itemsArr: Item[] = [];
       querySnapshot.forEach((doc) => {
         const itemData = doc.data();
