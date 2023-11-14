@@ -11,7 +11,7 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { getAnalytics } from 'firebase/analytics'; // Updated import
+import { getAnalytics } from 'firebase/analytics';
 import { db } from '../firebase';
 
 // Define the Item interface
@@ -117,8 +117,12 @@ const Admin: React.FC = () => {
   useEffect(() => {
     // Check if window is defined (client-side) before initializing analytics
     if (typeof window !== 'undefined') {
-      const analytics = getAnalytics();
-      // Rest of your analytics configuration
+      try {
+        const analytics = getAnalytics();
+        // Rest of your analytics configuration
+      } catch (error) {
+        console.error('Error initializing analytics:', error);
+      }
     }
 
     // Fetch items from the database
