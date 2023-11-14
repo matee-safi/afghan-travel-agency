@@ -91,9 +91,12 @@ export default function Packages() {
       setShowSearch(!showSearch);
     } else if (e.type === "submit") {
       e.preventDefault();
-      if ((e as React.FormEvent).currentTarget.search.value) {
-        setSearchTerm((e as React.FormEvent).currentTarget.search.value);
-        performSearch((e as React.FormEvent).currentTarget.search.value);
+      const formElement = e.currentTarget as HTMLFormElement;
+      const searchInput = formElement.querySelector<HTMLInputElement>('#search');
+  
+      if (searchInput && searchInput.value) {
+        setSearchTerm(searchInput.value);
+        performSearch(searchInput.value);
         setShowSearch(!showSearch);
       }
     }
