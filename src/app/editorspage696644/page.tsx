@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect, MouseEvent } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -26,6 +27,7 @@ interface Item {
 }
 
 const Admin: React.FC = () => {
+  const router = useRouter();
   const [error, setError] = useState<string>('');
   const [items, setItems] = useState<Item[]>([]);
   const [item, setItem] = useState<Item>({
@@ -102,7 +104,7 @@ const Admin: React.FC = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (router && typeof window !== 'undefined') {
       const hash = global.window && window.location.hash;
         const q = query(collection(db, 'items'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
