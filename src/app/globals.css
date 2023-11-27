@@ -318,11 +318,6 @@ path.two {
   /* font-size: 9px; */
 }
 
-.package-card-image-container img {
-  width: 100%;
-  object-fit: cover;
-}
-
 .popup {
   display: flex;
   position: fixed;
