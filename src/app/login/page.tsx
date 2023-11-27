@@ -1,14 +1,15 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import Link from 'next/link';
 
 const Login: React.FC = () => {
-    const router = useRouter();
-    const [user, loading] = useAuthState(auth);
+  const firebaseAuth = getAuth();
+  const router = useRouter();
+  const [user, loading] = useAuthState(auth);
 
   // Redirect to admin page if the user is already logged in
   useEffect(() => {
@@ -20,6 +21,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [resetEmailSent, setResetEmailSent] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -34,9 +36,20 @@ const Login: React.FC = () => {
     setSubmitting(false);
   };
 
+  const handleResetPassword = async () => {
+    try {
+    await sendPasswordResetEmail(firebaseAuth, email);
+    setResetEmailSent(true);
+      setError('');
+    } catch (error: any) {
+      setError(error.message);
+      setResetEmailSent(false);
+    }
+  };
+
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-3xl font-bold mb-4">Login</h1>
+    <div className="container max-w-lg mx-auto mt-10">
+      <h1 className="text-3xl font-bold mb-4 text-center">Login</h1>
       <form onSubmit={handleLogin} className="flex flex-col gap-4">
         <input
           type="email"
@@ -67,11 +80,13 @@ const Login: React.FC = () => {
         </button>
         {error && <p className="text-red-500">{error}</p>}
       </form>
-      <div className="py-7">
-        <Link className="text-blue-500 underline" href="/">
+      <div className="py-7 flex justify-between">
+        <Link className="text-blue-600 underline" href="/">
             Back to home page
         </Link>
+        <button onClick={handleResetPassword} className="underline text-blue-600">Forgot Password?</button>
       </div>
+      {resetEmailSent && <p>Password reset email has been sent!</p>}
     </div>
   );
 };
