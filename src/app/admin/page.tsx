@@ -13,7 +13,6 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import { set } from 'firebase/database';
 
 interface Item {
   id: string;
@@ -84,7 +83,7 @@ const Admin: React.FC = () => {
       !item.image ||
       !item.requiredDocs
     ) {
-      setUnfilled('Please fill all the fields');
+      setUnfilled('Please fill in all the required fields');
       setTimeout(() => {
         setUnfilled('');
       }, 5000);
@@ -263,13 +262,32 @@ const Admin: React.FC = () => {
           type="text"
           value={item.name}
           onChange={(e) => setItem({ ...item, name: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
+          id="category"
           className="w-full py-2 px-3 rounded-lg"
           placeholder="Category"
           type="text"
           value={item.category}
           onChange={(e) => setItem({ ...item, category: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
@@ -277,6 +295,15 @@ const Admin: React.FC = () => {
           type="text"
           value={item.headline}
           onChange={(e) => setItem({ ...item, headline: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
@@ -284,6 +311,15 @@ const Admin: React.FC = () => {
           type="text"
           value={item.processTime}
           onChange={(e) => setItem({ ...item, processTime: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
@@ -291,6 +327,15 @@ const Admin: React.FC = () => {
           type="text"
           value={item.price}
           onChange={(e) => setItem({ ...item, price: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
@@ -298,6 +343,15 @@ const Admin: React.FC = () => {
           type="text"
           value={item.image}
           onChange={(e) => setItem({ ...item, image: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
@@ -305,6 +359,15 @@ const Admin: React.FC = () => {
           type="text"
           value={item.requiredDocs}
           onChange={(e) => setItem({ ...item, requiredDocs: e.target.value })}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
+              if (nextElement) {
+                nextElement.focus();
+              }
+            }
+          }}
         />
         <textarea
           className="w-full py-2 px-3 rounded-lg"
@@ -313,7 +376,7 @@ const Admin: React.FC = () => {
           value={item.description}
           onChange={(e) => setItem({ ...item, description: e.target.value })}
         />
-        <p className="text-rose-500">{Unfilled}</p>
+        <p className="bg-red-500 text-white pl-5 rounded-lg">{Unfilled}</p>
         <div className="flex justify-end mb-5">
           <button
             className="bg-green-600 font-bold text-white py-2 px-3 rounded-lg hover:bg-green-700 transition"
@@ -440,6 +503,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.name}
               onChange={(e) => setItem({ ...item, name: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Category</label>
             <input
@@ -448,6 +520,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.category}
               onChange={(e) => setItem({ ...item, category: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Headline</label>
             <input
@@ -456,6 +537,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.headline}
               onChange={(e) => setItem({ ...item, headline: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Process Time</label>
             <input
@@ -464,6 +554,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.processTime}
               onChange={(e) => setItem({ ...item, processTime: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Price</label>
             <input
@@ -472,6 +571,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.price}
               onChange={(e) => setItem({ ...item, price: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Image</label>
             <input
@@ -480,6 +588,15 @@ const Admin: React.FC = () => {
               type="text"
               value={item.image}
               onChange={(e) => setItem({ ...item, image: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <label className="text-white">Requirements</label>
             <input
@@ -487,20 +604,26 @@ const Admin: React.FC = () => {
               placeholder="Requirements (comma-separated)"
               type="text"
               value={item.requiredDocs}
-              onChange={(e) => {
-              setItem({ ...item, requiredDocs: e.target.value })
-              console.log(item.requiredDocs)
-            }}
+              onChange={(e) => setItem({ ...item, requiredDocs: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  const nextElement = e.currentTarget.nextElementSibling?.lastChild as HTMLElement | null;
+                  if (nextElement) {
+                    nextElement.focus();
+                  }
+                }
+              }}
             />
             <div>
-            <label className="text-white">Description</label>
-            <textarea
-              className="w-full py-2 px-3 rounded-lg"
-              placeholder="Description (Optional)"
-              rows={5}
-              value={item.description}
-              onChange={(e) => setItem({ ...item, description: e.target.value })}
-            />
+              <label className="text-white">Description</label>
+              <textarea
+                className="w-full py-2 px-3 rounded-lg"
+                placeholder="Description (Optional)"
+                rows={5}
+                value={item.description}
+                onChange={(e) => setItem({ ...item, description: e.target.value })}
+              />
             </div>
             <p className="text-rose-500">{Unfilled}</p>
             <div className="flex justify-center gap-4">
