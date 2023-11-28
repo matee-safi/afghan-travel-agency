@@ -104,12 +104,10 @@ export default function Packages() {
 
   const openPopup = (index: number) => {
     setSelectedPackage(index);
-    document.body.classList.add('no-scroll');
   };
 
   const closePopup = () => {
     setSelectedPackage(null);
-    document.body.classList.remove('no-scroll');
   };
 
   const handlePopupClick = (e: React.MouseEvent) => {
@@ -278,16 +276,64 @@ export default function Packages() {
         <div className="container mx-auto">
           <div className="mt-10 p-2 overflow-none">
             {isLoading ? (
-              <div className="flex h-screen justify-center items-center">
-                <div className="sk-chase mb-20">
-                  <div className="sk-chase-dot"></div>
-                  <div className="sk-chase-dot"></div>
-                  <div className="sk-chase-dot"></div>
-                  <div className="sk-chase-dot"></div>
-                  <div className="sk-chase-dot"></div>
-                  <div className="sk-chase-dot"></div>
+              <>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
                 </div>
-              </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+                <div className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10">
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 text-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+              </>
             ) : (
               <>
                 {data.length < 1 && (
@@ -297,12 +343,12 @@ export default function Packages() {
                 )}
                 {data.map((item, index) => (
                   <div key={index} className="cursor-pointer md:px-10" onClick={() => openPopup(index)}>
-                    <div className="package-card-content grid grid-cols-12 p-2 mx-2 mt-4 rounded">
-                      <div className="package-card-image-container col-span-3 py-1 pr-2">
-                        <Image className="rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={200} height={50} loading="lazy" />
+                    <div className="grid grid-cols-12 p-2 mx-2 mt-4 rounded">
+                      <div className="col-span-3 py-1 pr-2">
+                        <Image className="w-full object-cover rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
                       </div>
                       <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
-                        <h3 className="package-card-title md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
+                        <h3 className="md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
                         <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">Process time: {item.processTime}</p>
                         <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
                       </div>
@@ -327,7 +373,7 @@ export default function Packages() {
           </div>
           {selectedPackage !== null && (
             <div>
-              <Image className="mb-4 md:m-0 popup-image rounded-t-lg w-full" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={200} height={200} loading="lazy" />
+              <Image className="mb-4 md:m-0 popup-image rounded-t-lg w-full" src={data[selectedPackage].image} alt={data[selectedPackage].name} width={500} height={500} loading="lazy" />
               <div className="px-5 md:px-7">
                 <h2 className="text-2xl md:text-3xl md:my-3 font-bold text-center text-orange-500">
                   {data[selectedPackage].name}

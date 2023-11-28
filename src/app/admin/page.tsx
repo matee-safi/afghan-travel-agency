@@ -12,7 +12,8 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 interface Item {
   id: string;
@@ -28,7 +29,8 @@ interface Item {
 
 const Admin: React.FC = () => {
   const router = useRouter();
-  const [error, setError] = useState<string>('');
+  const [user, loading] = useAuthState(auth)
+  const [Unfilled, setUnfilled] = useState<string>('');
   const [items, setItems] = useState<Item[]>([]);
   const [item, setItem] = useState<Item>({
     id: '',
@@ -42,6 +44,22 @@ const Admin: React.FC = () => {
     description: '',
   });
 
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace('/login'); // Redirect to your login page
+    }
+  }, [user, loading, router]);
+
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      // Redirect to the login page after sign-out
+      router.replace('/login');
+    } catch (error: any) {
+      console.error('Error signing out:', error.message);
+    }
+  };
+
   const addItem = async (e: MouseEvent) => {
     e.preventDefault();
     if (
@@ -53,7 +71,7 @@ const Admin: React.FC = () => {
       !item.image ||
       !item.requiredDocs
     ) {
-      setError('Please fill all the fields');
+      setUnfilled('Please fill all the fields');
     } else {
       const requiredDocsArray = item.requiredDocs.split(',');
       const docRef = await addDoc(collection(db, 'items'), {
@@ -90,6 +108,7 @@ const Admin: React.FC = () => {
   }
 
   const updateItem = async (id: string) => {
+    const requiredDocsArray = item.requiredDocs.split(',');
     const docRef = doc(db, 'items', id);
     await updateDoc(docRef, {
       name: item.name,
@@ -98,7 +117,7 @@ const Admin: React.FC = () => {
       processTime: item.processTime,
       price: item.price,
       image: item.image,
-      requiredDocs: item.requiredDocs,
+      requiredDocs: requiredDocsArray,
       description: item.description,
     });
   };
@@ -127,15 +146,37 @@ const Admin: React.FC = () => {
     });
   }, []);
 
+  if (loading) {
+    return  (
+      <div className="h-screen w-full"> 
+        <div className="flex h-full justify-center items-center">
+          <div className="sk-chase mb-20">
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+            <div className="sk-chase-dot"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="p-5">
-      <div className="flex gap-5 mb-3">
-        <Link href="/" className="underline">
-          Main Page
-        </Link>
-        <Link href="/packages" className="underline">
-          Packages Page
-        </Link>
+      <div className="flex justify-between">
+        <div className='flex gap-5 mb-3'>
+          <Link href="/packages" className="bg-blue-600 py-1.5 px-3 rounded-lg flex items-center gap-2">
+          <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+          </svg>
+            Home Page
+          </Link>
+        </div>
+        <button className="bg-red-600 py-1.5 px-3 rounded-lg" onClick={handleSignOut}>
+          Sign Out
+        </button>
       </div>
       <h1 className="text-3xl font-bold text-center mb-4">Admin's Page</h1>
       <form className="flex flex-col gap-2 text-black">
@@ -183,7 +224,7 @@ const Admin: React.FC = () => {
         />
         <input
           className="w-full py-2 px-3 rounded-lg"
-          placeholder="Required Documents (comma-separated)"
+          placeholder="Requirements (comma-separated)"
           type="text"
           value={item.requiredDocs}
           onChange={(e) => setItem({ ...item, requiredDocs: e.target.value })}
@@ -195,7 +236,7 @@ const Admin: React.FC = () => {
           value={item.description}
           onChange={(e) => setItem({ ...item, description: e.target.value })}
         />
-        <p className="text-rose-500">{error}</p>
+        <p className="text-rose-500">{Unfilled}</p>
         <div className="flex justify-center mb-5">
           <button
             className="bg-white w-fit py-2 px-3 rounded-lg hover:bg-gray-300"
@@ -215,7 +256,7 @@ const Admin: React.FC = () => {
             <th>Process Time</th>
             <th>Price</th>
             <th>Image</th>
-            <th>Required Documents</th>
+            <th>Requirements</th>
             <th>Description</th>
           </tr>
         </thead>
