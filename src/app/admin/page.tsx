@@ -126,9 +126,9 @@ const Admin: React.FC = () => {
     setDeleting(false);
     setDeleteModal(false);
     setItemToDelete('');
-    setTimeout(() => {
-      setNotice('');
-    }, 5000);
+    // setTimeout(() => {
+    //   setNotice('');
+    // }, 5000);
   };
 
   const handleDelete = async (id: string) => {
@@ -166,7 +166,7 @@ const Admin: React.FC = () => {
         processTime: item.processTime,
         price: item.price,
         image: item.image,
-        requiredDocs: item.requiredDocs,
+        requiredDocs: requiredDocsArray,
         description: item.description,
       });
       setNotice('Item updated successfully');
@@ -234,7 +234,7 @@ const Admin: React.FC = () => {
     <div className="p-5">
       {
         notice ? 
-          <div role="alert" className="bg-green-500 rounded-lg flex items-center justify-center p-3 fixed gap-4 bottom-4 left-4">
+          <div role="alert" className="bg-green-500 rounded-lg font-bold flex items-center justify-center p-3 fixed gap-2 bottom-4 left-4">
             <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <p>{notice}</p>
           </div>
