@@ -8,7 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const Nav = () => {
   const [user] = useAuthState(auth)
   return (
-    <nav className="sticky flex items-center justify-between z-10">
+    <nav className={`sticky flex items-center ${user ? 'justify-between pl-4' : 'justify-center md:justify-start'} z-10`}>
       <Link href="/">
         <div className="flex h-12 items-center mt-2 md:mt-4 justify-center md:justify-start md:pl-8 lg:pl-24 xl:pl-32">
           <Image className="flex items-center" src={logo} width={30} height={50} alt="logo" />
