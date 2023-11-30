@@ -126,9 +126,9 @@ const Admin: React.FC = () => {
     setDeleting(false);
     setDeleteModal(false);
     setItemToDelete('');
-    // setTimeout(() => {
-    //   setNotice('');
-    // }, 5000);
+    setTimeout(() => {
+      setNotice('');
+    }, 5000);
   };
 
   const handleDelete = async (id: string) => {
