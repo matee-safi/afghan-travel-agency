@@ -2,6 +2,7 @@
 import React, { useState, useEffect, MouseEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   collection,
   addDoc,
@@ -11,7 +12,8 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { db, auth, storage } from '../firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 interface Item {
@@ -27,6 +29,7 @@ interface Item {
 }
 
 const Admin: React.FC = () => {
+  const storage = getStorage();
   const router = useRouter();
   const [user, loading] = useAuthState(auth)
 
@@ -74,13 +77,13 @@ const Admin: React.FC = () => {
   const addItem = async (e: MouseEvent) => {
     e.preventDefault();
     setAdding(true);
+  
     if (
       !item.name ||
       !item.category ||
       !item.headline ||
       !item.processTime ||
       !item.price ||
-      !item.image ||
       !item.requiredDocs
     ) {
       setUnfilled('Please fill in all the required fields');
@@ -88,37 +91,60 @@ const Admin: React.FC = () => {
         setUnfilled('');
       }, 5000);
     } else {
-      const requiredDocsArray = item.requiredDocs.split(',');
-      const docRef = await addDoc(collection(db, 'items'), {
-        name: item.name,
-        category: item.category,
-        headline: item.headline,
-        processTime: item.processTime,
-        price: item.price,
-        image: item.image,
-        requiredDocs: requiredDocsArray,
-        description: item.description,
-      });
-      setNotice('Item added successfully');
-      setTimeout(() => {
-        setNotice('');
-      }, 5000);
-      console.log('Document written with ID: ', docRef.id);
-      setItem({
-        id: '',
-        name: '',
-        category: '',
-        headline: '',
-        processTime: '',
-        price: '',
-        image: '',
-        requiredDocs: '',
-        description: '',
-      });
+      // Ensure imageFile is defined
+      const imageInput = document.getElementById('imageInput') as HTMLInputElement | null;
+      const imageFile = imageInput?.files?.[0];
+  
+      if (imageFile) {
+        const requiredDocsArray = item.requiredDocs.split(',');
+  
+        // Upload image to Cloud Storage
+        const storageRef = ref(storage, 'images/' + imageFile.name);
+        await uploadBytes(storageRef, imageFile);
+  
+        // Get the image URL from Cloud Storage
+        const imageUrl = await getDownloadURL(storageRef);
+  
+        // Add the item to Cloud Firestore
+        const docRef = await addDoc(collection(db, 'items'), {
+          name: item.name,
+          category: item.category,
+          headline: item.headline,
+          processTime: item.processTime,
+          price: item.price,
+          image: imageUrl, // Set the image URL in the Firestore document
+          requiredDocs: requiredDocsArray,
+          description: item.description,
+        });
+  
+        setNotice('Item added successfully');
+        setTimeout(() => {
+          setNotice('');
+        }, 5000);
+        console.log('Document written with ID: ', docRef.id);
+  
+        setItem({
+          id: '',
+          name: '',
+          category: '',
+          headline: '',
+          processTime: '',
+          price: '',
+          image: '',
+          requiredDocs: '',
+          description: '',
+        });
+      } else {
+        // Handle case where imageFile is undefined
+        setUnfilled('Please select an image');
+        setTimeout(() => {
+          setUnfilled('');
+        }, 5000);
+      }
     }
     setAdding(false);
   };
-
+  
   const deleteItem = async (id: string) => {
     setDeleting(true);
     await deleteDoc(doc(db, 'items', id));
@@ -136,15 +162,22 @@ const Admin: React.FC = () => {
     setItemToDelete(id);
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setItem({ ...item, image: file });
+    }
+  };
+  
   const updateItem = async () => {
     setUpdating(true);
+  
     if (
       !item.name ||
       !item.category ||
       !item.headline ||
       !item.processTime ||
       !item.price ||
-      !item.image ||
       !item.requiredDocs
     ) {
       setUnfilled('Please fill all the fields');
@@ -152,12 +185,18 @@ const Admin: React.FC = () => {
         setUnfilled('');
       }, 3000);
     } else {
-    // Convert requiredDocs to an array if it's a string
-    const requiredDocsArray =
-      Array.isArray(item.requiredDocs) ?
-      item.requiredDocs :
-      item.requiredDocs.split(',');
-
+      const requiredDocsArray =
+        Array.isArray(item.requiredDocs) ?
+        item.requiredDocs :
+        item.requiredDocs.split(',');
+  
+      // If a new image is selected, upload it to Cloud Storage
+      if (item.image instanceof File) {
+        const storageRef = ref(storage, 'images/' + item.image.name);
+        await uploadBytes(storageRef, item.image);
+        item.image = await getDownloadURL(storageRef);
+      }
+  
       const docRef = doc(db, 'items', item.id);
       await updateDoc(docRef, {
         name: item.name,
@@ -169,10 +208,12 @@ const Admin: React.FC = () => {
         requiredDocs: requiredDocsArray,
         description: item.description,
       });
+  
       setNotice('Item updated successfully');
       setTimeout(() => {
         setNotice('');
       }, 5000);
+  
       setItem({
         id: '',
         name: '',
@@ -184,8 +225,10 @@ const Admin: React.FC = () => {
         requiredDocs: '',
         description: '',
       });
+  
       setUpdateOpen(false);
     }
+  
     setUpdating(false);
   };
 
@@ -338,21 +381,22 @@ const Admin: React.FC = () => {
           }}
         />
         <input
-          className="w-full py-2 px-3 rounded-lg"
+          id="imageInput"
+          className="w-full py-2 px-3 rounded-lg text-white"
           placeholder="Image"
-          type="text"
-          value={item.image}
-          onChange={(e) => setItem({ ...item, image: e.target.value })}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              const nextElement = e.currentTarget.nextElementSibling as HTMLElement | null;
-              if (nextElement) {
-                nextElement.focus();
-              }
-            }
-          }}
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleImageChange(e)}
         />
+        {item.image && item.image !== '' && (
+          <Image
+            className="mt-2 w-full object-cover rounded"
+            src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image}
+            width={500}
+            height={500}
+            alt="Selected"
+          />
+        )}
         <input
           className="w-full py-2 px-3 rounded-lg"
           placeholder="Requirements (comma-separated)"
@@ -421,7 +465,7 @@ const Admin: React.FC = () => {
                 <td className="whitespace-nowrap px-6 py-4">{item.price}</td>
                 <td className="whitespace-nowrap px-6 py-4">{item.category}</td>
                 <td className="whitespace-nowrap">
-                  <img className="w-full" src={item.image} alt={item.name} width={50} height={50} />
+                  <Image className="w-full" src={item.image} alt={item.name} width={50} height={50} />
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">{item.requiredDocs}</td>
                 <td className="whitespace-nowrap px-6 py-4">
@@ -583,21 +627,22 @@ const Admin: React.FC = () => {
             />
             <label className="text-white">Image</label>
             <input
-              className="w-full py-2 px-3 rounded-lg"
+              id="imageInput"
+              className="w-full py-8"
               placeholder="Image"
-              type="text"
-              value={item.image}
-              onChange={(e) => setItem({ ...item, image: e.target.value })}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  const nextElement = e.currentTarget.nextElementSibling?.nextElementSibling as HTMLElement | null;
-                  if (nextElement) {
-                    nextElement.focus();
-                  }
-                }
-              }}
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleImageChange(e)}
             />
+            {item.image && item.image !== '' && (
+              <Image
+                className="mt-2 w-full object-cover rounded"
+                src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image}
+                width={500}
+                height={500}
+                alt="Selected"
+              />
+            )}
             <label className="text-white">Requirements</label>
             <input
               className="w-full py-2 px-3 rounded-lg"
