@@ -12,7 +12,7 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { db, auth, storage } from '../firebase';
+import { db, auth } from '../firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -288,7 +288,7 @@ const Admin: React.FC = () => {
         <div className='flex gap-5 mb-3'>
           <Link href="/packages" className="bg-blue-600 py-1.5 px-3 rounded-lg flex items-center gap-2">
           <svg className="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
           </svg>
             Home Page
           </Link>
@@ -484,7 +484,7 @@ const Admin: React.FC = () => {
                   <div id={"menu-" + item.id} className={`absolute right-16 top-0 z-10 flex flex-col mt-8 mr-2 p-2 border border-gray-800 rounded bg-primary ${visibleMenuId === item.id ? "" : "hidden"}`}>
                     <button className="hover:bg-slate-600 p-2 rounded flex gap-2" onClick={() => handleDelete(item.id)}>
                     <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                     </svg>
                       <p>Delete</p>
                     </button>
