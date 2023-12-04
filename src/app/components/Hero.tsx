@@ -1,18 +1,11 @@
-'use client'
+'use client';
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import hero from "public/hero.jpg";
 import heroMobile from "public/hero-mobile.jpg";
 
 const Hero: React.FC = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   return (
     <section id="hero">
       <div className="flex flex-col md:flex-row md:justify-center w-full">
@@ -20,21 +13,19 @@ const Hero: React.FC = () => {
           <p className="text-3xl leading-9 text-center md:text-left md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
             Helping You Travel Is Our Life&lsquo;s Mission
           </p>
-          <p className="text-2xl lg:text-3xl md:font-bold font-semibold flex pl-9 md:pl-0 m-2 md:mx-0 text-center md:text-left mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+          <div className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 pl-9 md:pl-0 text-center md:text-left mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
             Our Services are&nbsp;<span>{""}</span>
-            {isClient && (
-              <Typewriter
-                options={{
-                  strings: ["Secure", "Timely", "Reliable"],
-                  autoStart: true,
-                  loop: true,
-                }}
-              ></Typewriter>
-            )}
-          </p>
+            <Typewriter
+              options={{
+                strings: ["Secure", "Timely", "Reliable"],
+                autoStart: true,
+                loop: true,
+              }}
+            ></Typewriter>
+          </div>
           <Link href="packages?category=all">
             <div className="wrapper">
-              <a className="cta lg:text-3xl md:mb-20 lg:mb-32" href="#">
+              <div className="cta lg:text-3xl md:mb-20 lg:mb-32">
                 <span className="">See Packages</span>
                 <span>
                   <svg
@@ -45,7 +36,7 @@ const Hero: React.FC = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                   >
-                    <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                       <path
                         className="one"
                         d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
@@ -64,7 +55,7 @@ const Hero: React.FC = () => {
                     </g>
                   </svg>
                 </span>
-              </a>
+              </div>
             </div>
           </Link>
         </div>
