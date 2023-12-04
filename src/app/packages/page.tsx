@@ -269,6 +269,11 @@ export default function Packages() {
                 <span className="category-tab-text">Asylum</span>
               </Link>
             </div>
+            <div className={`${categoryFromURL === "form" ? "active" : ""} category-tab-item`}>
+              <Link className="p-3" href="/packages?category=form">
+                <span className="category-tab-text">Online Form</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
