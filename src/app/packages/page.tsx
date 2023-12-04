@@ -56,7 +56,7 @@ export default function Packages() {
       setData(allData);
     } else {
       const filteredData = allData.filter(
-        (item) => item.category === categoryFromURL
+        (item) => item.category.toLowerCase() === categoryFromURL
       );
       setData(filteredData);
     }

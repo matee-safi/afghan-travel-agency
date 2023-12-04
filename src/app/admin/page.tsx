@@ -108,7 +108,7 @@ const Admin: React.FC = () => {
         // Add the item to Cloud Firestore
         const docRef = await addDoc(collection(db, 'items'), {
           name: item.name,
-          category: item.category,
+          category: item.category.replaceAll(' ', ''),
           headline: item.headline,
           processTime: item.processTime,
           price: item.price,
@@ -200,7 +200,7 @@ const Admin: React.FC = () => {
       const docRef = doc(db, 'items', item.id);
       await updateDoc(docRef, {
         name: item.name,
-        category: item.category,
+        category: item.category.replaceAll(' ', ''),
         headline: item.headline,
         processTime: item.processTime,
         price: item.price,
