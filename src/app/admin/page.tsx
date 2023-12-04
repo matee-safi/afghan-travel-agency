@@ -23,7 +23,7 @@ interface Item {
   headline: string;
   processTime: string;
   price: string;
-  image: string;
+  image: string | File;
   requiredDocs: string;
   description: string;
 }
@@ -162,8 +162,8 @@ const Admin: React.FC = () => {
     setItemToDelete(id);
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       setItem({ ...item, image: file });
     }
@@ -465,7 +465,7 @@ const Admin: React.FC = () => {
                 <td className="whitespace-nowrap px-6 py-4">{item.price}</td>
                 <td className="whitespace-nowrap px-6 py-4">{item.category}</td>
                 <td className="whitespace-nowrap">
-                  <Image className="w-full" src={item.image} alt={item.name} width={50} height={50} />
+                  <Image className="w-full" src={item.image instanceof File ? URL.createObjectURL(item.image) : item.image} alt={item.name} width={50} height={50} />
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">{item.requiredDocs}</td>
                 <td className="whitespace-nowrap px-6 py-4">
