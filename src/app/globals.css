@@ -370,3 +370,38 @@ path.two {
   height: 30px;
   cursor: pointer;
 }
+
+.neon-text {
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px orange,
+      0 0 82px orange,
+      0 0 92px orange,
+      0 0 102px orange,
+      0 0 151px orange;
+  animation: flicker 1.5s infinite alternate; 
+}
+
+@keyframes flicker {
+    
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px orange,
+      0 0 80px orange,
+      0 0 90px orange,
+      0 0 100px orange,
+      0 0 150px orange;
+  
+  }
+  
+  20%, 24%, 55% {        
+      text-shadow: none;
+  }    
+}

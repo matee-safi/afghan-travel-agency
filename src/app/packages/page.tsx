@@ -56,7 +56,7 @@ export default function Packages() {
       setData(allData);
     } else {
       const filteredData = allData.filter(
-        (item) => item.category === categoryFromURL
+        (item) => item.category.toLowerCase() === categoryFromURL
       );
       setData(filteredData);
     }
@@ -267,6 +267,11 @@ export default function Packages() {
             <div className={`${categoryFromURL === "asylum" ? "active" : ""} category-tab-item`}>
               <Link className="p-3" href="/packages?category=asylum">
                 <span className="category-tab-text">Asylum</span>
+              </Link>
+            </div>
+            <div className={`${categoryFromURL === "form" ? "active" : ""} category-tab-item`}>
+              <Link className="p-3" href="/packages?category=form">
+                <span className="category-tab-text">Online Form</span>
               </Link>
             </div>
           </div>
