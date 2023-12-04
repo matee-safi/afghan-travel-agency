@@ -96,8 +96,8 @@ const Admin: React.FC = () => {
       const imageFile = imageInput?.files?.[0];
   
       if (imageFile) {
-        const requiredDocsArray = item.requiredDocs.split(',');
-  
+        const requiredDocsArray = item.requiredDocs.split(/[,\u060C\u060D]/);
+
         // Upload image to Cloud Storage
         const storageRef = ref(storage, 'images/' + imageFile.name);
         await uploadBytes(storageRef, imageFile);
@@ -188,7 +188,7 @@ const Admin: React.FC = () => {
       const requiredDocsArray =
         Array.isArray(item.requiredDocs) ?
         item.requiredDocs :
-        item.requiredDocs.split(',');
+        item.requiredDocs.split(/[,\u060C\u060D]/);
   
       // If a new image is selected, upload it to Cloud Storage
       if (item.image instanceof File) {
