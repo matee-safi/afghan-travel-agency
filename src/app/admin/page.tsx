@@ -12,7 +12,7 @@ import {
   updateDoc,
   doc,
 } from 'firebase/firestore';
-import { db, auth, storage } from '../firebase';
+import { db, auth } from '../firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
