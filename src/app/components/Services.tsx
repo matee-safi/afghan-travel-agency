@@ -9,17 +9,17 @@ const services = () => {
   return (
     <section id="services">
       <div className="container mx-auto">
-        <h1 className="m-5 mt-10 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-red-900 to-red-400">Our Services</h1>
+        <h1 className="m-5 mt-10 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-red-900 to-red-400">خدمات ما</h1>
         <div className="p-5 md:grid md:grid-cols-2">
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
               <Image src={visa} alt="Visa" />
             </div>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-ellipsis text-orange-300">Visa Assistance</h3>
-            <p className="mb-3 mx-4 max-w-sm lg:text-xl">We offer visa assistance for many countries, including Pakistan, Iran, Qatar and, etc. You can see all of our Visa packages and their prices by pressing the button bellow.</p>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-ellipsis text-orange-300">خدمات ویزه</h3>
+            <p className="mb-3 mx-4 max-w-sm lg:text-xl">ما برای بسیاری از کشورها از جمله پاکستان، ایران، قطر و غیره کمک ویزه ارائه می دهیم. شما می توانید با فشار دادن دکمه زیر تمامی بسته های ویزه و قیمت آنها را مشاهده کنید</p>
             <Link className="btn-primary" href="packages?category=visa">
-              <button className="btn-hover btn-color">See Visa Packages</button>
+              <button className="btn-hover btn-color">مشاهده بسته های ویزه</button>
             </Link>
           </div>
 
@@ -27,10 +27,10 @@ const services = () => {
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
               <Image src={scholarship} alt="Visa" />
             </div>
-            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">Scholarships</h3>
-            <p className="mb-3 mx-4 max-w-sm lg:text-xl">We offer Scholarships for many countries, including England, Scotland, Belarus and, etc. Our team of professional consultants will help you on every step of your journey.</p>
+            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">بورسیه های تحصیلی</h3>
+            <p className="mb-3 mx-4 max-w-sm lg:text-xl">ما برای بسیاری از کشورها از جمله انگلستان، اسکاتلند، بلاروس و غیره بورس تحصیلی ارائه می دهیم. تیم مشاوران حرفه ای ما در هر مرحله از سفر به شما کمک میکنند</p>
             <Link className="btn-primary" href="packages?category=scholarship">
-              <button className="btn-hover btn-color">Scholarship Packages</button>
+              <button className="btn-hover btn-color">مشاهده بسته های تحصیلی</button>
             </Link>
           </div>
 
@@ -38,10 +38,10 @@ const services = () => {
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
               <Image src={ticket} alt="Visa" />
             </div>
-            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">Tickets</h3>
-            <p className="mb-3 mx-4 max-w-sm lg:text-xl">We specialize in providing the lowest-rate tickets for both national and international flights, ensuring affordable travel options for all your journeys and destinations.</p>
+            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">خدمات تکت</h3>
+            <p className="mb-3 mx-4 max-w-sm lg:text-xl">ما در ارائه ارزان‌ترین تکت‌ها برای پروازهای داخلی و خارجی تخصص داریم و از گزینه‌های سفر مقرون به صرفه برای همه سفرها و مقصدهای شما اطمینان می‌دهیم</p>
             <Link className="btn-primary" href="packages?category=ticket">
-              <button className="btn-hover btn-color">See Ticket Packages</button>
+              <button className="btn-hover btn-color">مشاهده بسته های تکت</button>
             </Link>
           </div>
 
@@ -49,10 +49,10 @@ const services = () => {
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
               <Image width={128} height={128} src={immigration} alt="Visa" />
             </div>
-            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">Asylum</h3>
-            <p className="mb-3 mx-4 max-w-sm lg:text-xl">We offer Asylum Offers to a variety of countries with great conditions, you'll block your money at an agiotage and pay us when you arrive at your destination.</p>
+            <h3  className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">پرونده های پناهندگی</h3>
+            <p className="mb-3 mx-4 max-w-sm lg:text-xl">ما پیشنهادات پناهندگی را به کشورهای مختلف با شرایط عالی ارائه می دهیم، شما پول خود را در یک صرافی مسدود می کنید و زمانی که به مقصد خود رسیدید به ما پرداخت می کنید</p>
             <Link className="btn-primary" href="packages?category=asylum">
-              <button className="btn-hover btn-color">See Asylum Packages</button>
+              <button className="btn-hover btn-color">مشاهده بسته های پناهندگی</button>
             </Link>
           </div>
 

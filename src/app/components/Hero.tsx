@@ -8,25 +8,29 @@ import heroMobile from "public/hero-mobile.jpg";
 const Hero: React.FC = () => {
   return (
     <section id="hero">
-      <div className="flex flex-col md:flex-row md:justify-center w-full">
-        <div className="flex z-10 justify-center w-full items-center md:pl-8 md:items-start lg:pl-24 xl:pl-32 flex-col mb-20">
-          <p className="text-3xl leading-9 text-center md:text-left md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
-            Helping You Travel Is Our Life&lsquo;s Mission
+      <div className="flex flex-col md:flex-row md:justify-center w-full container mx-auto px-4">
+        <div className="w-full">
+          <Image className="hidden md:block min-h-[600px]" src={hero} alt="background" layout="fill" objectFit="cover" />
+          <Image className="md:hidden" src={heroMobile} alt="background" layout="fill" objectFit="cover" />
+        </div>
+        <div className="flex text-center md:text-right z-10 justify-center w-full items-center md:items-end flex-col mb-20">
+          <p className="text-3xl leading-9 text-center md:text-right md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
+            کمک به شما در سفر ماموریت زندگی ماست
           </p>
-          <div className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 pl-9 md:pl-0 text-center md:text-left mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-            Our Services are&nbsp;<span>{""}</span>
+          <div className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 pl-9 md:pl-0 text-center md:text-right mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
             <Typewriter
               options={{
-                strings: ["Secure", "Timely", "Reliable"],
+                strings: ["امن است", "به موقع", "قابل اعتماد"],
                 autoStart: true,
                 loop: true,
               }}
-            ></Typewriter>
+            />
+            خدمات ما هستند&nbsp;<span>{""}</span>
           </div>
           <Link href="packages?category=all">
             <div className="wrapper">
               <div className="cta lg:text-3xl md:mb-20 lg:mb-32">
-                <span className="">See Packages</span>
+                <span className="">مشاهده بسته ها</span>
                 <span>
                   <svg
                     width="66px"
@@ -58,10 +62,6 @@ const Hero: React.FC = () => {
               </div>
             </div>
           </Link>
-        </div>
-        <div className="w-full">
-          <Image className="hidden md:block min-h-[600px]" src={hero} alt="background" layout="fill" objectFit="cover" />
-          <Image className="md:hidden" src={heroMobile} alt="background" layout="fill" objectFit="cover" />
         </div>
       </div>
     </section>
