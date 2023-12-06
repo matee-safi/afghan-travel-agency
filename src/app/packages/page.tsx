@@ -177,7 +177,7 @@ export default function Packages() {
                 <div>
                   <div className="flex items-center h-12 justify-start pl-2">
                     <Link href="/">
-                      <Image className="w- h-full p-1.5" src={logo} width={50} height={50} alt="logo" />
+                      <Image className="h-full p-1.5" src={logo} width={50} height={50} alt="logo" />
                     </Link>
                     <form
                       className="w-full flex items-center"
@@ -352,13 +352,13 @@ export default function Packages() {
                       <div className="col-span-3 py-1 pr-2">
                         <Image className="w-full object-cover rounded-lg h-16 md:h-24 lg:h-32" src={item.image} alt={item.name} width={100} height={50} loading="lazy" />
                       </div>
-                      <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-start justify-start">
-                        <h3 className="md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
-                        <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">Process time: {item.processTime}</p>
-                        <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
-                      </div>
-                      <div className="price md:text-xl lg:text-2xl md:pt-2 font-mono font-bold flex justify-end">
+                      <div className="price md:text-xl lg:text-2xl pt-2 font-mono font-bold flex">
                         {item.price}
+                      </div>
+                      <div className="col-span-8 flex md:pl-4 md:justify-center md:pb-2 flex-col items-end">
+                        <h3 className="md:text-2xl lg:text-3xl font-bold">{item.name}</h3>
+                        {item.processTime && <p className="font-semibold md:text-xl lg:text-2xl text-gray-400">مدت پروسس: {item.processTime}</p>}
+                        <p className="text-gray-400 md:text-xl lg:text-2xl">{item.headline}</p>
                       </div>
                     </div>
                   </div>
@@ -384,25 +384,34 @@ export default function Packages() {
                   {data[selectedPackage].name}
                 </h2>
                 <div className="popup-price md:text-lg my-2 font-bold flex justify-between">
-                  <h3>
-                    Process Time: {data[selectedPackage].processTime}
-                  </h3>
+                  {
+                    data[selectedPackage].processTime &&
+                    <h3>
+                      مدت پروسس: {data[selectedPackage].processTime}
+                    </h3>
+                  }
                   <p>
-                    Price: {data[selectedPackage].price}
+                    قیمت: {data[selectedPackage].price}
                   </p>
                 </div>
                 <p className="md:text-lg">{data[selectedPackage].description}</p>
-                <h3 className="font-bold text-lg md:text-xl text-center my-2">Requirements:</h3>
-                {data[selectedPackage].requiredDocs.map((item, index) => (
-                  <div key={index} className="text-slate-700">
-                    <li className="ml-2 font-semibold md:text-lg">{item}</li>
-                  </div>
-                ))}
+                {
+                  data[selectedPackage].requiredDocs.length > 0 && (
+                    <>
+                      <h3 className="font-bold text-lg md:text-xl text-center my-2">اسناد مورد نیاز</h3>
+                      {data[selectedPackage].requiredDocs.map((item, index) => (
+                        <div key={index} className="text-slate-700">
+                          <li className="mr-2 list-none text-right font-semibold md:text-lg">{item} -</li>
+                        </div>
+                      ))}
+                    </>
+                  )
+                }
                 <div className="text-center py-4">
                   <button className="md:text-lg">
                     <Link className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded flex items-center gap-1"  href="https://wa.me/93785105088" target='_blank'>
                       <Image src={whatsapp} alt="whatsapp" width={20} height={20} />
-                      Get This Package
+                      دریافت این بسته
                     </Link>
                   </button>
                 </div>

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:900i');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,6 +51,9 @@ input[type="search"]:focus::-webkit-search-cancel-button {
   opacity: .3;
   pointer-events: all;
 }
+
+ul { direction: rtl; }
+ul li { direction: ltr; unicode-bidi: embed; }
 
 .sk-chase {
   width: 40px;
@@ -106,6 +112,7 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 
 body {
   background-color: #0f0f0f;
+  font-family: 'IBM Plex Sans Arabic' !important;
   color: #fff;
 }
 
@@ -114,7 +121,7 @@ body {
 }
 
 .logo-text {
-  font-family: "Bebas Neue", Roboto, sans-serif;
+  font-family: "Bebas Neue", 'Noto Kufi Arabic', Roboto, sans-serif;
 }
 
 .btn-hover {
