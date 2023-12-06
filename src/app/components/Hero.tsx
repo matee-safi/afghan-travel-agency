@@ -15,22 +15,15 @@ const Hero: React.FC = () => {
         </div>
         <div className="flex text-center md:text-right z-10 justify-center w-full items-center md:items-end flex-col mb-20">
           <p className="text-3xl leading-9 text-center md:text-right md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
-            کمک به شما در سفر ماموریت زندگی ماست
+            کمک برای شما ماموریت زندگی ماست
           </p>
-          <div className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 pl-9 md:pl-0 text-center md:text-right mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-            <Typewriter
-              options={{
-                strings: ["امن است", "به موقع", "قابل اعتماد"],
-                autoStart: true,
-                loop: true,
-              }}
-            />
-            خدمات ما هستند&nbsp;<span>{""}</span>
-          </div>
+          <p className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 text-center md:text-right mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
+            دوست مسافرتی قابل اعتماد شما
+          </p>
           <Link href="packages?category=all">
             <div className="wrapper">
               <div className="cta lg:text-3xl md:mb-20 lg:mb-32">
-                <span className="">مشاهده بسته ها</span>
+                <span>مشاهده بسته ها</span>
                 <span>
                   <svg
                     width="66px"

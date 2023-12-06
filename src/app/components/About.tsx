@@ -9,8 +9,8 @@ const About = () => {
         </div>
         <div className="flex-grow text-right md:w-1/2 md:mr-4 order-1 md:order-2">
           <h1 className="m-5 md:mt-10 lg:md-15 xl:mt-20 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-900 to-red-400">درباره ما</h1>
-          <p className="m-5 lg:text-xl">در آژانس مسافرتی افغانستان، با بیش از یک دهه تجربه، ما برای ساده سازی رویاهای سفر شما تلاش می کنیم. ما کمک های معتبر ویزا، پایین ترین قیمت تکت و بورسیه های تحصیلی انحصاری اروپا را ارائه می دهیم. به علاوه، خط مشی بازپرداخت کامل ما تضمین می کند که سفر شما بدون استرس باشد</p>
-          <p className="m-5 lg:text-xl font-semibold text-red-300">شما می توانید موقعیت مکانی ما را در این نقشه تعاملی بیابید</p>
+          <p className="m-5 lg:text-xl">در شرکت سیاحتی افغان، با بیش از یک دهه تجربه کاری برای ساده سازی رویاهای سفر شما تلاش می کنیم. ما کمک های معتبر ویزا، پایین ترین قیمت تکت و بورسیه های تحصیلی انحصاری اروپا را ارائه می دهیم. به علاوه، خط مشی بازپرداخت کامل ما تضمین می کند که سفر شما بدون استرس باشد</p>
+          <p className="m-5 lg:text-xl font-semibold text-red-300">شما می توانید موقعیت ما را در این نقشه بیابید</p>
         </div>
       </div>
     </section>
