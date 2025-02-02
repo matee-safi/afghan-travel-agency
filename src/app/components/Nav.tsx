@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "logo.png";
+import logo from "./logo.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
