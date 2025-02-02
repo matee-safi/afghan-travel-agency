@@ -66,14 +66,14 @@ const Hero: React.FC = () => {
         <div className="w-full">
           <Image
             className="hidden md:block min-h-[600px]"
-            src="hero.jpg"
+            src="/hero.jpg"
             alt="background"
             layout="fill"
             objectFit="cover"
           />
           <Image
             className="md:hidden"
-            src="hero-mobile.jpg"
+            src="/hero-mobile.jpg"
             alt="background"
             layout="fill"
             objectFit="cover"

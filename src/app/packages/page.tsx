@@ -5,9 +5,6 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { db } from "../firebase";
 import { collection, getDocs, query } from "@firebase/firestore";
-import logo from "logo.png";
-import whatsapp from "whatsapp.png";
-import close from "cancel.png";
 import "../globals.css";
 
 interface Item {
@@ -180,7 +177,7 @@ export default function Packages() {
                   <Link href="/">
                     <Image
                       className="w- h-full p-1.5"
-                      src={logo}
+                      src="/logo.png"
                       width={50}
                       height={50}
                       alt="logo"
@@ -223,7 +220,7 @@ export default function Packages() {
                   <div className="flex items-center h-12 justify-start pl-3">
                     <Image
                       className="w-fit h-full py-2"
-                      src={logo}
+                      src="/logo.png"
                       width={50}
                       height={50}
                       alt="logo"
@@ -434,7 +431,7 @@ export default function Packages() {
         >
           <div className="popup-close flex justify-end">
             <button onClick={closePopup}>
-              <Image src={close} alt="close" width={20} height={20} />
+              <Image src="/cancel.png" alt="close" width={20} height={20} />
             </button>
           </div>
           {selectedPackage !== null && (
@@ -474,7 +471,7 @@ export default function Packages() {
                       target="_blank"
                     >
                       <Image
-                        src={whatsapp}
+                        src="/whatsapp.png"
                         alt="whatsapp"
                         width={20}
                         height={20}

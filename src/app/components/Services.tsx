@@ -1,8 +1,4 @@
 import Image from "next/image";
-import visa from "visa.png";
-import scholarship from "scholarship.png";
-import ticket from "ticket.png";
-import immigration from "immigration.png";
 import Link from "next/link";
 
 const services = () => {
@@ -15,7 +11,7 @@ const services = () => {
         <div className="p-5 md:grid md:grid-cols-2">
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src={visa} alt="Visa" />
+              <Image src="/visa.png" alt="Visa" />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-ellipsis text-orange-300">
               Visa Assistance
@@ -32,7 +28,7 @@ const services = () => {
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src={scholarship} alt="Visa" />
+              <Image src="/scholarship.png" alt="Visa" />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">
               Scholarships
@@ -51,7 +47,7 @@ const services = () => {
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src={ticket} alt="Visa" />
+              <Image src="/ticket.png" alt="Visa" />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">
               Tickets
@@ -70,7 +66,12 @@ const services = () => {
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image width={128} height={128} src={immigration} alt="Visa" />
+              <Image
+                width={128}
+                height={128}
+                src="/immigration.png"
+                alt="Visa"
+              />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">
               Asylum
