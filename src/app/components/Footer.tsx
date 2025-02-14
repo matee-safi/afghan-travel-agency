@@ -10,16 +10,16 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12">
           <div>
             <div
-              className={`${bebasNeue.className} font- flex items-center space-x-2 mb-4`}
+              className={`${bebasNeue.className} text-lg flex items-center space-x-2 mb-4`}
             >
               <Image
                 src="/logo.png"
                 alt="logo"
                 width={32}
                 height={32}
-                className="w-6 h-6"
+                className="w-6 h-6 mr-px"
               />
-              <p>Afghan Travel Agency</p>
+              Afghan Travel Agency
             </div>
             <p className="text-sm text-gray-400">
               Revolutionizing Travel Agencies through secure peer-to-peer

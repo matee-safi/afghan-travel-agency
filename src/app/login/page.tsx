@@ -15,7 +15,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Login = () => {
-  const [user] = useAuthState(auth);
+  const [authLoad] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
@@ -24,13 +24,12 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  // Redirect if signed in
   useEffect(() => {
-    if (user) {
+    if (authLoad) {
       toast.error("Already Signed in");
       router.replace("/");
     }
-  }, [router]);
+  }, [authLoad]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -71,7 +70,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen md:pt-16 relative overflow-hidden">
+    <div className="min-h-screen pt-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent" />
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated background elements */}
