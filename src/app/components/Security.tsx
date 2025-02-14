@@ -2,7 +2,7 @@ import { Shield } from "lucide-react";
 
 const Security = () => {
   return (
-    <section id="security" className="md:py-32 pb-28 relative overflow-hidden">
+    <section id="security" className="py-32 pb-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid md:grid-cols-2 gap-16 items-center">
