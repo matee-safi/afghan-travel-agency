@@ -3,15 +3,15 @@ import Link from "next/link";
 
 const services = () => {
   return (
-    <section id="services">
+    <section id="services" className="py-32 relative overflow-hidden">
       <div className="container mx-auto">
-        <h1 className="m-5 mt-10 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-red-900 to-red-400">
+        <h1 className="m-5 mt-10 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-red-900 to-red-500">
           Our Services
         </h1>
         <div className="p-5 md:grid md:grid-cols-2">
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src="/visa.png" alt="Visa" />
+              <Image width={128} height={128} src="/visa.png" alt="Visa" />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-ellipsis text-orange-300">
               Visa Assistance
@@ -28,7 +28,12 @@ const services = () => {
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src="/scholarship.png" alt="Visa" />
+              <Image
+                width={128}
+                height={128}
+                src="/scholarship.png"
+                alt="Visa"
+              />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">
               Scholarships
@@ -47,10 +52,10 @@ const services = () => {
 
           <div className="text-center flex flex-col items-center my-10">
             <div className="p-10 w-fit bg-gradient-to-r from-orange-700 via-orange-500 to-amber-500 m-5 rounded-full flex items-center justify-center">
-              <Image src="/ticket.png" alt="Visa" />
+              <Image width={128} height={128} src="/ticket.png" alt="Visa" />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">
-              Tickets
+              Booking
             </h3>
             <p className="mb-3 mx-4 max-w-sm lg:text-xl">
               We specialize in providing the lowest-rate tickets for both
@@ -70,7 +75,7 @@ const services = () => {
                 width={128}
                 height={128}
                 src="/immigration.png"
-                alt="Visa"
+                alt="Immigration"
               />
             </div>
             <h3 className="text-2xl md:text-3xl lg:text-4xl  font-bold mb-2 text-ellipsis text-orange-300">

@@ -1,83 +1,54 @@
-"use client";
 import Link from "next/link";
-import Typewriter from "typewriter-effect";
-import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero">
-      <div className="flex flex-col md:flex-row md:justify-center w-full">
-        <div className="flex z-10 justify-center w-full items-center md:pl-8 md:items-start lg:pl-24 xl:pl-32 flex-col mb-20">
-          <p className="text-3xl leading-9 text-center md:text-left md:text-5xl mx-4 md:mx-0 mt-20 md:mt-28 lg:mt-32 mb-2 font-light">
-            Helping You Travel Is Our Life&lsquo;s Mission
-          </p>
-          <div className="text-2xl lg:text-3xl md:font-bold font-semibold flex my-2 pl-9 md:pl-0 text-center md:text-left mb-10 text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-            Our Services are&nbsp;<span>{""}</span>
-            <Typewriter
-              options={{
-                strings: ["Secure", "Timely", "Reliable"],
-                autoStart: true,
-                loop: true,
-              }}
-            ></Typewriter>
+    <section className="py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-transparent" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-block mb-4 px-4 py-1 bg-red-500/10 rounded-full text-red-500 text-sm font-medium">
+            Revolutionizing Travel Booking
           </div>
-          <Link href="packages?category=all">
-            <div className="wrapper">
-              <div className="cta lg:text-3xl md:mb-20 lg:mb-32">
-                <span className="">See Packages</span>
-                <span>
-                  <svg
-                    width="66px"
-                    height="43px"
-                    viewBox="0 0 66 43"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                  >
-                    <g
-                      id="arrow"
-                      stroke="none"
-                      strokeWidth="1"
-                      fill="none"
-                      fillRule="evenodd"
-                    >
-                      <path
-                        className="one"
-                        d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
-                        fill="#FFFFFF"
-                      ></path>
-                      <path
-                        className="two"
-                        d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
-                        fill="#FFFFFF"
-                      ></path>
-                      <path
-                        className="three"
-                        d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
-                        fill="#FFFFFF"
-                      ></path>
-                    </g>
-                  </svg>
-                </span>
-              </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+            The Future of{" "}
+            <span className="bg-gradient-to-r from-red-500 to-red-500 text-transparent bg-clip-text">
+              Online <br /> Travel Booking
+            </span>
+          </h1>
+          <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+            Join thousands who are already saving on Traveling costs through our
+            Secure Online Travel agency bookings.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <Link
+              href="packages?category=all"
+              className="bg-red-500 hover:bg-red-600 px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center"
+            >
+              See Our Packages <ChevronRight className="ml-2 w-4 h-4" />
+            </Link>
+            <Link
+              href="https://wa.me/93785105088"
+              target="_blank"
+              className="border border-gray-800 hover:border-gray-700 px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center"
+            >
+              Get in Touch
+            </Link>
+          </div>
+          <div className="mt-12 pt-12 border-t border-gray-800 grid grid-cols-3 gap-8">
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">5k+</div>
+              <div className="text-sm text-gray-400">Satisfied Customers</div>
             </div>
-          </Link>
-        </div>
-        <div className="w-full">
-          <Image
-            className="hidden md:block min-h-[600px]"
-            src="/hero.jpg"
-            alt="background"
-            layout="fill"
-            objectFit="cover"
-          />
-          <Image
-            className="md:hidden"
-            src="/hero-mobile.jpg"
-            alt="background"
-            layout="fill"
-            objectFit="cover"
-          />
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">$200K+</div>
+              <div className="text-sm text-gray-400">Cost Saved</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-white mb-1">99.9%</div>
+              <div className="text-sm text-gray-400">Success Rate</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
