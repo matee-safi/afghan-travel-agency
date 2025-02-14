@@ -50,9 +50,9 @@ const Nav = () => {
                   width={32}
                   height={32}
                   src="/logo.png"
-                  className="w-8 h-8"
+                  className="w-8 h-8 mr-px"
                 />
-                Afghan Travel Agency
+                <p>Afghan Travel Agency</p>
               </div>
             </Link>
             <div className="hidden md:flex text-sm text-gray-400 gap-4">
