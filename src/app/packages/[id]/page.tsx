@@ -1,27 +1,25 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
-import AppointmentForm from "@/app/components/AppointmentForm";
 import Footer from "@/app/components/Footer";
+import AppointmentForm from "@/app/components/AppointmentForm";
+import { useParams } from "next/navigation";
+import { useItemStore, Item } from "../../store/itemStore";
 
-interface Item {
-  id: string;
-  name: string;
-  category: string;
-  headline: string;
-  description: string;
-  processTime: string;
-  price: number;
-  image: string;
-  requiredDocs: string[];
-}
+export default function Product() {
+  const { id } = useParams();
+  const { items } = useItemStore();
+  const [item, setItem] = useState<Item | null>(null);
 
-export default async function Product({ params }: { params: { id: string } }) {
-  const { id } = params;
-  const docRef = doc(db, "items", id);
-  const docSnap = await getDoc(docRef);
+  useEffect(() => {
+    // Try to locate the item in the global store
+    const found = items.find((it) => it.id === id);
+    if (found) {
+      setItem(found);
+    }
+  }, [id, items]);
 
-  const item = { id: docSnap.id, ...docSnap.data() } as Item;
+  if (!item) return <div>Loading...</div>;
 
   return (
     <>
@@ -36,7 +34,6 @@ export default async function Product({ params }: { params: { id: string } }) {
             className="rounded-lg shadow-lg object-cover"
           />
         </div>
-
         <div className="flex flex-col mt-8">
           <h1 className="text-4xl font-bold mb-4">{item.name}</h1>
           <p className="text-xl text-gray-500 mb-2">{item.headline}</p>
@@ -53,7 +50,6 @@ export default async function Product({ params }: { params: { id: string } }) {
           <p className="mb-4">
             <strong>Required Documents:</strong> {item.requiredDocs.join(", ")}
           </p>
-
           <AppointmentForm itemId={item.id} />
         </div>
       </div>
