@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
               See Our Packages <ChevronRight className="ml-2 w-4 h-4" />
             </Link>
             <Link
-              href="https://wa.me/93785105088"
+              href="https://api.whatsapp.com/send?phone=93785105088"
               target="_blank"
               className="border border-gray-800 hover:border-gray-700 px-8 py-4 rounded-lg font-medium transition-colors flex items-center justify-center"
             >
