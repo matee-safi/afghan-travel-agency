@@ -26,7 +26,6 @@ const Login = () => {
 
   useEffect(() => {
     if (authLoad) {
-      toast.error("Already Signed in");
       router.replace("/");
     }
   }, [authLoad]);
