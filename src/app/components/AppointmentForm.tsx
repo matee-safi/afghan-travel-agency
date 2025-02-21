@@ -38,7 +38,7 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
 
       const appointmentData = {
         userId: user.uid,
-        userEmail: user.email, // optional: store user email from auth
+        userEmail: user.email,
         itemId,
         name,
         email,
@@ -62,8 +62,8 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
   };
 
   return (
-    <div className="mt-8 p-6 border rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Make an Appointment</h2>
+    <div className="bg-dark-800 p-6 rounded-xl w-full max-w-2xl mt-12">
+      <h2 className="text-2xl font-semibold mb-6">Make an Appointment</h2>
       {success ? (
         <div className="p-4 bg-green-100 text-green-800 rounded">{message}</div>
       ) : (
@@ -76,7 +76,7 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
               onChange={(e) => setName(e.target.value)}
               required
               placeholder="Full Name"
-              className="mt-1 block text-black w-full border border-gray-300 rounded-md p-2"
+              className="w-full bg-dark-700 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
           <div>
@@ -87,7 +87,7 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="example@mail.com"
-              className="mt-1 text-black block w-full border border-gray-300 rounded-md p-2"
+              className="w-full bg-dark-700 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
           <div>
@@ -98,7 +98,7 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
               onChange={(e) => setPhone(e.target.value)}
               required
               placeholder="+93700000000"
-              className="mt-1 text-black block w-full border border-gray-300 rounded-md p-2"
+              className="w-full bg-dark-700 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
           <div>
@@ -109,13 +109,13 @@ export default function AppointmentForm({ itemId }: AppointmentFormProps) {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className="mt-1 text-black block w-full border border-gray-300 rounded-md p-2"
+              className="w-full bg-dark-700 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="bg-red-500 text-white px-4 py-2 rounded"
+            className="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 transition-colors"
           >
             {loading ? "Loading..." : "Ask for Appointment"}
           </button>

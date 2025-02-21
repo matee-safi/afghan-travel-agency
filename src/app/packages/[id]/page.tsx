@@ -1,25 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Footer from "@/app/components/Footer";
 import AppointmentForm from "@/app/components/AppointmentForm";
-import { useParams } from "next/navigation";
 import { useItemStore, Item } from "../../store/itemStore";
 
 export default function Product() {
   const { id } = useParams();
   const { items } = useItemStore();
-  const [item, setItem] = useState<Item | null>(null);
+  const item = items.find((it: Item) => it.id === id);
 
-  useEffect(() => {
-    // Try to locate the item in the global store
-    const found = items.find((it) => it.id === id);
-    if (found) {
-      setItem(found);
-    }
-  }, [id, items]);
-
-  if (!item) return <div>Loading...</div>;
+  if (!item) return <div>Item not found or not loaded yet.</div>;
 
   return (
     <>
