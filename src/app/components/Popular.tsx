@@ -48,14 +48,14 @@ export default async function Popular() {
 
   return (
     <section id="services" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="m-5 py-10 text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent text-center bg-clip-text bg-gradient-to-r from-red-900 to-red-500">
           Popular Packages
         </h1>
         {items.length === 0 ? (
           <p className="text-gray-400">No popular items found.</p>
         ) : (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {items.map((item) => (
               <li
                 key={item.id}
