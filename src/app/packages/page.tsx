@@ -1,28 +1,57 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import Footer from "../components/Footer";
+import { useItemStore, Item } from "../store/itemStore";
 
-export default async function Packages({
-  searchParams,
-}: {
-  searchParams?: { category?: string };
-}) {
-  const q = query(collection(db, "items"));
-  const querySnapshot = await getDocs(q);
-  const fetchedItems = querySnapshot.docs.map(
-    (doc) => ({ id: doc.id, ...doc.data() } as any)
-  );
+export default function Packages() {
+  // Get items and setter from Zustand store
+  const { items, setItems } = useItemStore();
+  const [displayItems, setDisplayItems] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const categoryFromURL = searchParams.get("category");
 
-  let displayItems = fetchedItems;
-  const category = searchParams?.category;
-  if (category && category !== "all") {
-    displayItems = fetchedItems.filter(
-      (item) => item.category.toLowerCase() === category
-    );
-  }
+  const getData = async () => {
+    setIsLoading(true);
+    let fetchedItems: Item[] = [];
+    const q = query(collection(db, "items"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      fetchedItems.push({ id: doc.id, ...doc.data() } as Item);
+    });
+    // Store the fetched items globally
+    setItems(fetchedItems);
+    setDisplayItems(fetchedItems);
+    setIsLoading(false);
+  };
+
+  // On mount, fetch data if not already stored
+  useEffect(() => {
+    if (items.length === 0) {
+      getData();
+    } else {
+      setDisplayItems(items);
+    }
+  }, [items]);
+
+  // Filter items based on the URL category
+  useEffect(() => {
+    if (categoryFromURL) {
+      if (categoryFromURL === "all") {
+        setDisplayItems(items);
+      } else {
+        const filtered = items.filter(
+          (item) => item.category.toLowerCase() === categoryFromURL
+        );
+        setDisplayItems(filtered);
+      }
+    }
+  }, [categoryFromURL, items]);
 
   return (
     <>
@@ -32,7 +61,7 @@ export default async function Packages({
             <div className="category-tab gap-1 no-scrollbar backdrop-blur-lg bg-black/50 border-b border-gray-800">
               <div
                 className={`${
-                  category === "all" || "" ? "active" : ""
+                  categoryFromURL === "all" || "" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=all">
@@ -41,7 +70,7 @@ export default async function Packages({
               </div>
               <div
                 className={`${
-                  category === "visa" ? "active" : ""
+                  categoryFromURL === "visa" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=visa">
@@ -50,7 +79,7 @@ export default async function Packages({
               </div>
               <div
                 className={`${
-                  category === "ticket" ? "active" : ""
+                  categoryFromURL === "ticket" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=ticket">
@@ -59,7 +88,7 @@ export default async function Packages({
               </div>
               <div
                 className={`${
-                  category === "scholarship" ? "active" : ""
+                  categoryFromURL === "scholarship" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=scholarship">
@@ -68,7 +97,7 @@ export default async function Packages({
               </div>
               <div
                 className={`${
-                  category === "asylum" ? "active" : ""
+                  categoryFromURL === "asylum" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=asylum">
@@ -77,7 +106,7 @@ export default async function Packages({
               </div>
               <div
                 className={`${
-                  category === "form" ? "active" : ""
+                  categoryFromURL === "form" ? "active" : ""
                 } category-tab-item`}
               >
                 <Link className="p-3" href="/packages?category=form">
@@ -87,14 +116,29 @@ export default async function Packages({
             </div>
           </div>
           <div className="mt-10 p-2 overflow-none">
-            {displayItems.length < 1 ? (
-              <div className="flex h-40 items-center justify-center">
-                <h1 className="text-xl text-gray-500 font-bold text-center p-6">
-                  Package Not Found
-                </h1>
-              </div>
+            {isLoading ? (
+              Array.from({ length: 6 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="animate-pulse grid grid-cols-12 p-2 mx-2 mt-4 md:px-10"
+                >
+                  <div className="col-span-3 bg-gray-700 rounded-lg h-16 md:h-28 lg:h-32"></div>
+                  <div className="col-span-9 ml-2 md:ml-4 flex flex-col justify-center">
+                    <div className="bg-gray-700 rounded-full h-3 md:h-6 w-1/2"></div>
+                    <div className="bg-gray-700 rounded-full h-2.5 md:h-5 my-2.5 md:my-5"></div>
+                    <div className="bg-gray-700 rounded-full h-2.5 md:h-5 w-3/5"></div>
+                  </div>
+                </div>
+              ))
             ) : (
               <>
+                {displayItems.length < 1 && (
+                  <div className="flex h-40 items-center justify-center">
+                    <h1 className="text-xl text-gray-500 font-bold text-center p-6">
+                      Package Not Found
+                    </h1>
+                  </div>
+                )}
                 {displayItems.map((item) => (
                   <Link key={item.id} href={`packages/${item.id}`}>
                     <div className="cursor-pointer md:px-10">
